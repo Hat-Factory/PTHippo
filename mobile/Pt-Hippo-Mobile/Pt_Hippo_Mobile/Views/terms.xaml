@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+             x:Class="Pt_Hippo_Mobile.Views.terms">
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <customcontrols:CustomNavigationBar NavigationBarType="MasterDetail" Title="Privacy and Terms" />
+
+        <Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1" Grid.RowSpan="3"/>
+
+        <Grid Grid.Row="1" ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Privacy and Policy" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Term" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="Terms of use"  Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer  Tapped="agreement"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <BoxView x:Name="UnderlineBoxView" HeightRequest="3" Color="#f79651" VerticalOptions="End"/>
+        </Grid>
+        <Grid x:Name="termsgrid"  Padding="10" Grid.Row="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0"  >
+ 
+                <Frame  HasShadow="false"  Opacity="0.7" OutlineColor="#60afd"  BackgroundColor="#e5ffffff" HorizontalOptions="FillAndExpand" HeightRequest="900" CornerRadius="2" >
+                    <ScrollView  >
+                        <StackLayout Orientation="Vertical" Opacity="1" >
+                            <StackLayout>
+
+
+                                <Label Text="Privacy and Policy" TextColor="#2980b9" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,10,0,4" FontSize="21" />
+                                <Label x:Name="agreementtext" Text="Hassan" FontSize="14"  Opacity="0.6" TextColor="#1d1d26" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </ScrollView>
+                </Frame>
+            </StackLayout>
+           
+        </Grid>
+        <Grid x:Name="agreementgrid"  Padding="10" Grid.Row="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <StackLayout x:Name="mainstack" Grid.Row="0"  >
+
+                <Frame  HasShadow="false"  Opacity="0.7" OutlineColor="#60afd"  BackgroundColor="#e5ffffff" HorizontalOptions="FillAndExpand" HeightRequest="900" CornerRadius="2" >
+                    <ScrollView>
+                        <StackLayout Orientation="Vertical"  Opacity="1" >
+                            <StackLayout>
+
+                                <Label Text="Terms of use and user agreement" TextColor="#2980b9" FontAttributes="Bold"  HorizontalOptions="Center" Margin="0,10,0,4" FontSize="19" />
+
+                                <Label x:Name="privacyPolicyLabel" Text="Hassan" FontSize="14"   LineBreakMode="WordWrap"  TextColor="#1d1d26" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+
+                           
+                        </StackLayout>
+                    </ScrollView>
+                </Frame>
+            </StackLayout>
+
+        </Grid>
+    </Grid>
+</ContentPage>

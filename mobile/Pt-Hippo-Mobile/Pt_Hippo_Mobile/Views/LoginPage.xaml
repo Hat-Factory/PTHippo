@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Pt_Hippo_Mobile.ViewModel;assembly=Pt_Hippo_Mobile"
+             xmlns:local="clr-namespace:Pt_Hippo_Mobile.Controls" BackgroundColor="Chocolate"
+             xmlns:vo="clr-namespace:Pt_Hippo_Mobile.Vaildation;assembly=Pt_Hippo_Mobile"
+             xmlns:t="clr-namespace:Pt_Hippo_Mobile.Helpers;assembly=Pt_Hippo_Mobile"
+             xmlns:bc="clr-namespace:ButtonCircle.FormsPlugin.Abstractions;assembly=ButtonCircle.FormsPlugin.Abstractions"
+             xmlns:ef="clr-namespace:Pt_Hippo_Mobile.Effects"
+             x:Class="Pt_Hippo_Mobile.Views.LoginPage"
+             >
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <Color x:Key="primary">#fffff</Color>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10" Spacing="5">
+                <StackLayout Orientation="Vertical" Spacing="2" >
+
+                    <Image x:Name="logo" Source="logo.png"  Margin="10,50,10,10" HorizontalOptions="CenterAndExpand" />
+                    <Label    Text="Get Started !" TextColor="#60afdf" FontSize="25" HorizontalOptions="CenterAndExpand"  />
+
+                </StackLayout>
+                <!--OutlineColor="#60afd"-->
+                <!--Opacity="0.5"-->
+                <!--HasShadow="false"-->
+
+                <Grid  Margin="0,20,0,35" x:Name="cooloring"  >
+                    <StackLayout Padding="5,20,5,5" Orientation="Vertical" Opacity="1" TranslationY="-10">
+                        <Label Text="Email" FontSize="18"  TextColor="#7f8c8d"  />
+                    
+                        <local:ImageEntry Completed="whencomplete" TextColor="#60afdf" Opacity="1" 
+                        PlaceholderColor="#60afdf"   TranslationY="-4"                       
+                        Placeholder="email@web.com" Text="{Binding UserName}"  Keyboard="Email" x:Name="Email"  FontSize="16" 
+                        HorizontalOptions="FillAndExpand">
+                            <local:ImageEntry.Behaviors>
+                                <vo:EntryValidatorBehavior IsCheckEmail="True" IsCheckEmpty="True" MinLength="0" MaxLength="255" x:Name="EmailValidator" />
+                            </local:ImageEntry.Behaviors>
+                        </local:ImageEntry>
+                        <Label  x:Name="emailtext" TranslationY="-5" TextColor="#f79651" Text="{Binding Source={x:Reference EmailValidator}, Path=Message}" IsVisible="{Binding Source={x:Reference EmailValidator}, Path=IsVisibleMessage}"  />
+                       
+                        <Label Text="Password" TranslationY="3" TextColor="#7f8c8d" FontSize="18"  />
+                        <local:ImageEntry Completed="Passwordentry_OnCompleted"  Opacity="1"  TextColor="#60afdf" FontSize="16" ImageAlignment="Right" x:Name="passwordentry" TranslationY="-3"  PlaceholderColor="#60afdf"  Text="{Binding Password}" HorizontalOptions="FillAndExpand">
+                            <local:ImageEntry.Behaviors>
+                                <vo:EntryValidatorBehavior x:Name="passwordcheck" IsCheckEmpty="True" IsCheckpassword="True"/>
+                            </local:ImageEntry.Behaviors>
+                            <local:ImageEntry.Effects>
+                                <ef:ShowHidePassEffect/>
+                            </local:ImageEntry.Effects>
+                        </local:ImageEntry>
+                        <Button TextColor="White"  TranslationY="29" Margin="20,5,20,20"  Text="Sign in"  BackgroundColor="#f79651 "  Command="{Binding LoginCommand}"   HorizontalOptions="FillAndExpand" BorderRadius="30"   FontSize="15" WidthRequest="50" HeightRequest="60"/>
+                        <Button TextColor="White" TranslationY="10" BorderRadius="30"   Clicked="Handle_Clicked" Margin="20,0,20,0"  Text="Sign up"  BackgroundColor="Gray"     HorizontalOptions="FillAndExpand"    FontSize="15" WidthRequest="50" HeightRequest="60">
+
+                        </Button>
+
+                        <Label Text="Forgot Password" TranslationY="15" TextColor="#1d1d26" FontSize="15"  Margin="0,1,0,1" HorizontalOptions="Center" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" NumberOfTapsRequired="1"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Grid TranslationY="10"   WidthRequest="500" HorizontalOptions="Center"  >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="1*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <BoxView   BackgroundColor="#1d1d26"  TranslationX="-85" Grid.Column="2"  Opacity="0.5" VerticalOptions="End" HeightRequest="2"  />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+
+</ContentPage>

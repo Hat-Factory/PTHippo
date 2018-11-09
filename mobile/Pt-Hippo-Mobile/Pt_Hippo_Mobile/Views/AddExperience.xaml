@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:vm="clr-namespace:Pt_Hippo_Mobile.ViewModel"
+     xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+     xmlns:vo="clr-namespace:Pt_Hippo_Mobile.Vaildation;assembly=Pt_Hippo_Mobile"
+    x:Class="Pt_Hippo_Mobile.Views.AddExperience">
+    <ContentPage.BindingContext>
+        <vm:AddNewExperience/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#ffffff</Color>
+            <Color x:Key="ColorPrimary">#60afdf</Color>
+            <Color x:Key="SignUp" >#60afdf</Color>
+            <Color x:Key="titlecolor">#7f8c8d</Color>
+            <Color x:Key="splitcolor" >#f79651</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <customcontrols:CustomNavigationBar NavigationBarType="NavigationPage" Title="Experience" />
+
+
+        <ScrollView Grid.Row="2"  >
+            <Grid  Margin="15,15,15,25"  x:Name="addexperinec"  VerticalOptions="Start" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/> 
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Orientation="Vertical" Grid.Row="0"  Grid.ColumnSpan="3" Margin="20" >
+                    <Label Text="Where" Opacity="0.5" FontSize="18"/>
+                    <customcontrols:ImageEntry  x:Name="where"  Opacity="1" FontSize="16"    Text="{Binding Whereplace,Mode=TwoWay}" Placeholder="Experience location" TranslationY="-10" TextColor="#60afdf" PlaceholderColor="#60afdf" VerticalOptions="Center">
+                        <customcontrols:ImageEntry.Behaviors>
+                            <vo:EntryValidatorBehavior   IsCheckEmpty="True" MinLength="0" MaxLength="255"  x:Name="whereplace"/>
+                        </customcontrols:ImageEntry.Behaviors>
+                    </customcontrols:ImageEntry>
+                    <Label TextColor="#f79651"  x:Name="wherevaild"     TranslationY="-16" Text="{Binding Source={x:Reference whereplace}, Path=Message}" IsVisible="{Binding Source={x:Reference whereplace}, Path=IsVisibleMessage}" />
+
+
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="0" TranslationY="97" Grid.Column="0" Margin="20,0,0,0">
+                    <Label Text="From" Opacity="0.5" FontSize="18"/>
+                    <DatePicker  HeightRequest="45"    TranslationY="-8" x:Name="from" Format="MM-dd-yy" TextColor="#60afdf" Date="{Binding Fromtimes}"  WidthRequest="80"  />
+
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="0" TranslationY="97" Grid.Column="1" TranslationX="6" >
+                    <Label Text="To" Opacity="0.5" FontSize="18"/>
+                    <DatePicker TranslationY="-8" x:Name="to"  HeightRequest="45" Format="MM-dd-yy" Date="{Binding Totimes}"  WidthRequest="80"  />
+
+                </StackLayout>
+
+                <StackLayout TranslationY="97" Grid.Row="0" Grid.Column="2" TranslationX="10">
+                    <Label Text="Current" Opacity="0.5" FontSize="18"/>
+                    <Image x:Name="currenr"  HeightRequest="35" WidthRequest="35"  TranslationY="-2"   TranslationX="-30" Source="UNCWWBackround">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
+
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" Margin="20,0,0,20" Grid.ColumnSpan="3"  HorizontalOptions="FillAndExpand" TranslationY="165" Grid.Row="0" >
+                    <Label Text="Job title" Opacity="0.5" FontSize="18" TranslationY="7"/>
+                    <customcontrols:ImageEntry  x:Name="Title" Opacity="1" Placeholder="Job title" Text="{Binding Jobtitle,Mode=TwoWay}" TranslationY="-8" TextColor="#60afdf" PlaceholderColor="#60afdf" VerticalOptions="Center"  FontSize="16" >
+                        <customcontrols:ImageEntry.Behaviors>
+                            <vo:EntryValidatorBehavior   IsCheckEmpty="True" MinLength="0" MaxLength="255"  x:Name="title"/>
+                        </customcontrols:ImageEntry.Behaviors>
+                    </customcontrols:ImageEntry>
+                    <Label TextColor="#f79651"  x:Name="titlevaild"  TranslationY="-9"   Text="{Binding Source={x:Reference title}, Path=Message}" IsVisible="{Binding Source={x:Reference title}, Path=IsVisibleMessage}" />
+
+
+
+                </StackLayout>
+
+
+
+                <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Margin="20,2,0,20"   TranslationY="-79">
+                    <StackLayout Orientation="Horizontal" x:Name="TSLayout">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="skillsTapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label Text="Job Description"  Opacity="0.5" FontSize="18"/>
+                        <Image Source="arrows"   WidthRequest="20" HeightRequest="20"  >
+
+                        </Image>
+                    </StackLayout>
+
+                    <Editor HorizontalOptions="FillAndExpand"  BackgroundColor="White" x:Name="SkillstextDescription" HeightRequest="100" Text="{Binding Description,Mode=TwoWay}"  WidthRequest="80" Margin="0,0,30,0" TextColor="#60afdf"/>
+                </StackLayout>
+
+                <StackLayout Padding="5" Orientation="Vertical"  Grid.ColumnSpan="3"   TranslationY="-110"    Margin="20,20,0,20"  Grid.Row="3" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Margin="0,0,0,0" Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
+                            <Button x:Name="btnUpload"  FontSize="10" Text=" Recommendation Letter "   HorizontalOptions="StartAndExpand"   IsEnabled="{Binding isenabel,Mode=TwoWay}" HeightRequest="50"  Command="{Binding PickPhoto}"    Opacity="0.5" TextColor="#1d1d26" BackgroundColor="#D9DBDE" />
+                        </StackLayout>
+                        <StackLayout Margin="10,0,0,0"  Padding="5" Grid.Row="0" Grid.Column="1" >
+                            <Label  FontSize="16" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand"  Text="{Binding Nameshow}" TextColor="Orange"  />
+                        </StackLayout> 
+                    </Grid> 
+                </StackLayout>
+                <Grid  TranslationY="3"  VerticalOptions="Start" Grid.ColumnSpan="3" Grid.Row="3" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions> 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions> 
+                    <Button  Grid.Column="3"  Command="{Binding SaveExp }" IsEnabled="{Binding isenabelbtn}" Grid.Row="1"   Text="Save" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="White"  HeightRequest="40" BorderRadius="20" WidthRequest="150" BackgroundColor="#f79651"/>
+                </Grid>
+            </Grid>
+
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

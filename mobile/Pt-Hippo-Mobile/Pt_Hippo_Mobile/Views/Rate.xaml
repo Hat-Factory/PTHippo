@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+             xmlns:vm="clr-namespace:Pt_Hippo_Mobile.ViewModel"
+             x:Class="Pt_Hippo_Mobile.Views.Rate">
+    <ContentPage.BindingContext>
+        <vm:RatingViewModel />
+    </ContentPage.BindingContext>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <customcontrols:CustomNavigationBar  NavigationBarType="MasterDetail" Title="My Ratings"/>
+
+        <Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1" Grid.RowSpan="3"/>
+
+
+        <Grid Grid.Row="1"  RowSpacing="0" x:Name="rategrid" IsVisible="False" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0" Margin="10"  >
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="gr" CommandParameter="{Binding Id}" Tapped="gr_Tapped">
+                    </TapGestureRecognizer>
+                </Grid.GestureRecognizers>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.75*"/>
+                    <RowDefinition Height="0.75*"/>
+                    <RowDefinition Height="0.75*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Margin="10,0,10,0"  HorizontalOptions="Start"    VerticalOptions="Center"  Orientation="Vertical">
+                    <Label Text="{Binding Jobtitle}" TextColor="#f79651"   />
+                    <Label Text="{Binding Jobtype}"   TextColor="DimGray" FontSize="Micro" VerticalOptions="Start"    />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10,0,10,0"  Grid.Row="0"    TranslationY="45"  HorizontalOptions="Start">
+
+                    <Image Source="time" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+
+                    <Label Text="{Binding Date}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"  Grid.Row="0"    TranslationY="45"  Margin="10,0,20,0"     HorizontalOptions="End">
+                    <Image Source="money" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+                    <Label Text="{Binding MinRate}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <Grid   Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Orientation="Horizontal"  Margin="10,0,10,0" TranslationY="88" HorizontalOptions="FillAndExpand"  >
+                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                            <Image Source="location" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+                            <Label Text="{Binding Location}" TextColor="DimGray"  FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand"   >
+                            <Image Source="parking" HeightRequest="20" WidthRequest="20"   />
+                            <Label Text="{Binding Hasparking}" TextColor="#f79651" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal"    HorizontalOptions="End">
+                            <Image Source="bus" HeightRequest="20" WidthRequest="20"   />
+                            <Label Text="{Binding Haspublictrasnportion}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView Opacity="0.2" HeightRequest="2" Grid.Row="1" TranslationY="100" BackgroundColor="#7f8c8d"  />
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" HorizontalOptions="Center"  VerticalOptions="Center"  x:Name="norategrid" IsVisible="False">
+          <Label Text="No Pending Rating " VerticalOptions="Center" HorizontalOptions="Center" TranslationY="100"/>
+        </Grid>
+        
+        <ScrollView Margin="10,-30,0,0" BackgroundColor="Transparent"  Grid.Row="2">
+            <Grid IsVisible="False" Margin="10" x:Name="Qgrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <StackLayout Spacing="10" Grid.Row="0">
+                    <Label TextColor="DimGray" FontSize="13" FontAttributes="Bold" Text="{Binding Label1}" />
+                    <StackLayout   Spacing="5" Orientation="Horizontal"> 
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="image1" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID1}" Tapped="answerone" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" x:Name="l1" Text="(0-5)" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="image2" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID1}" Tapped="answertwo" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" x:Name="l2" Text="(5-10)"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="image3" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID1}" Tapped="answerthree" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" x:Name="l3"  Text="(10-20)"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="image4" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID1}" Tapped="answerfour" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" x:Name="l4" Text="(+20)"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView Opacity="0.2" HeightRequest="2"       BackgroundColor="#7f8c8d"  VerticalOptions="End" />
+                </StackLayout>
+                
+                <StackLayout Spacing="10" Grid.Row="1">
+                    <Label TextColor="DimGray" FontSize="13" FontAttributes="Bold"  x:Name="Label2" Text="{Binding Label2}" />
+                    <StackLayout   Spacing="5" Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="im1" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID2}" Tapped="Qtwoanswerone"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" Text="Yes"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="im2" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID2}" Tapped="Qtwoanswertwo"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" Text="No"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView Opacity="0.2" HeightRequest="2"       BackgroundColor="#7f8c8d"  VerticalOptions="End" />
+                </StackLayout>
+                
+                <StackLayout Spacing="10" Grid.Row="2">
+                    <Label TextColor="DimGray"  FontSize="13" FontAttributes="Bold" x:Name="Label3"  Text="{Binding Label3}" />
+                    <StackLayout  Spacing="5" Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="ima1" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID3}" Tapped="Qthreeanswerone"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" Text="Yes"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="ima2" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID3}" Tapped="Qthreeanswertwo"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" Text="No"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView Opacity="0.2" HeightRequest="2"       BackgroundColor="#7f8c8d"  VerticalOptions="End" />
+                </StackLayout>
+                
+                <StackLayout Spacing="10" Grid.Row="3">
+                    <Label TextColor="DimGray" FontSize="13" FontAttributes="Bold"   x:Name="Label4"  Text="{Binding Label4}"/>
+                    <StackLayout   Spacing="5" Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="imag1" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID4}" Tapped="Qfouranswerone"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" Text="Good"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  x:Name="imag2" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers >
+                                    <TapGestureRecognizer CommandParameter="{Binding ID4}" Tapped="Qfoureanswertwo"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" Text="Very Good"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="imag3" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID4}" Tapped="Qfouranswerthree"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" Text="Bad"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="imag4" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID4}" Tapped="Qfoureanswerfouer"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" Text="Very Bad"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView Opacity="0.2" HeightRequest="2"       BackgroundColor="#7f8c8d"  VerticalOptions="End" />
+                </StackLayout>
+                
+                <StackLayout Spacing="10" Grid.Row="4">
+                    <Label TextColor="DimGray" FontSize="13" FontAttributes="Bold" x:Name="Label5" Text="{Binding Label5}" />
+                    <StackLayout   Spacing="5" Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="iimag1" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID5}" Tapped="Qfiveanswerone"/>
+                                </Image.GestureRecognizers>
+
+                            </Image>
+                            <Label TextColor="DimGray" Text="Yes"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="iimag2" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID5}" Tapped="Qfiveanswertwo"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" Text="No"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView Opacity="0.2" HeightRequest="2"  BackgroundColor="#7f8c8d"  VerticalOptions="End" />
+                </StackLayout>
+
+                <StackLayout Spacing="10" Grid.Row="5">
+                    <Label TextColor="DimGray" FontSize="13" FontAttributes="Bold"   x:Name="Label6"  Text="{Binding Label6}"/>
+                    <StackLayout   Spacing="5" Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="imagnew" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID6}" Tapped="Qsixanswerone"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" Text="Good"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image  x:Name="imagnew1" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers >
+                                    <TapGestureRecognizer CommandParameter="{Binding ID6}" Tapped="Qsixanswertwo"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" Text="Very Good"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="imagnew2" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID6}" Tapped="Qsixanswerthree"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" Text="Bad"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="imagnew3" HeightRequest="20" WidthRequest="20" Source="RadiooUn.png" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding ID6}" Tapped="Qsixanswerfouer"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label TextColor="DimGray" Text="Very Bad"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView Opacity="0.2" HeightRequest="2"       BackgroundColor="#7f8c8d"  VerticalOptions="End" />
+                </StackLayout>
+
+                <StackLayout Grid.Row="6">
+                    <Button Command="{Binding submitcommand}"  IsEnabled="{Binding isenabel}"    Text="Rate" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  Margin="67,10,67,10" BorderRadius="20" TextColor="White" BackgroundColor="#f79651"/>
+                </StackLayout>
+                <StackLayout Grid.Row="6">
+                    <Button Command="{Binding submitcommand}"  IsEnabled="{Binding isenabel}"    Text="Rate" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  Margin="67,10,67,10" BorderRadius="20" TextColor="White" BackgroundColor="#f79651"/>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

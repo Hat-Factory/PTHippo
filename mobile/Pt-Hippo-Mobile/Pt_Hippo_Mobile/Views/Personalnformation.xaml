@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Pt_Hippo_Mobile.Views.Personalnformation"
+      xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+    xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+     xmlns:local="clr-namespace:Pt_Hippo_Mobile.Controls"
+     xmlns:upvm="clr-namespace:Pt_Hippo_Mobile.ViewModel;assembly=Pt_Hippo_Mobile"
+     xmlns:vo="clr-namespace:Pt_Hippo_Mobile.Vaildation;assembly=Pt_Hippo_Mobile">
+    <ContentPage.BindingContext>
+        <upvm:personalinodviewmodel/>
+    </ContentPage.BindingContext>
+
+    
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        
+
+        <customcontrols:CustomNavigationBar NavigationBarType="Modal" Title="Profile Details"/>
+        
+        
+
+        <Grid Grid.Row="1" RowSpacing="0" Padding="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
+                <controls:CircleImage Source="{Binding FileImage,Mode=TwoWay}" x:Name="ProfilePicture" Aspect="AspectFill" HeightRequest="85" WidthRequest="85" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Image x:Name="LOAD" Source="addbtn" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="30" WidthRequest="30" TranslationX="35" TranslationY="-35">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding PickPhoto}" NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+
+            
+            <Grid Grid.Row="1" ColumnSpacing="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Profile" FontSize="16" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="personaltab"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Change Password" FontSize="16" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  Tapped="passsword"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView x:Name="UnderlineBoxView" HeightRequest="3" Color="#f79651" VerticalOptions="End"/>
+            </Grid>
+
+
+            <Grid Grid.Row="2" x:Name="personalinfogrid" >
+                <ScrollView Grid.Row="0">
+                    <StackLayout x:Name="personallayout"  Padding="10" Spacing="10" Margin="10,0,10,10">
+
+                        <StackLayout  Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label Text="First Name"  FontSize="18" TextColor="#1d1d26" Opacity="0.6" />
+
+                                <local:ImageEntry Text="{Binding FirstNamelocal, Mode=TwoWay}"  Opacity="1"  Placeholder="Enter your name" FontSize="16" WidthRequest="150"  PlaceholderColor="#60afdf" Keyboard="Text" TextColor="#60afdf">
+                                    <!--<local:ImageEntry.Behaviors>
+                                        <vo:EntryValidatorBehavior IsCheckEmpty="True" MinLength="0" MaxLength="255"  x:Name="firstname"/>
+                                    </local:ImageEntry.Behaviors>-->
+                                </local:ImageEntry>
+                                <!--<Label TextColor="#f79651" FontSize="15" Text="{Binding Source={x:Reference firstname}, Path=Message}" IsVisible="{Binding Source={x:Reference firstname}, Path=IsVisibleMessage}" />-->
+                            </StackLayout>
+                            
+                            <StackLayout HorizontalOptions="EndAndExpand">
+                                <Label Text="Last Name" FontSize="18" TextColor="#1d1d26" Opacity="0.6"/>
+                                <local:ImageEntry   Opacity="1"  Text="{Binding LastNamelocal, Mode=TwoWay}" Placeholder="Enter your name" FontSize="16" WidthRequest="150" PlaceholderColor="#60afdf" Keyboard="Text" TextColor="#60afdf">
+
+                                    <!--<local:ImageEntry.Behaviors>
+                                        <vo:EntryValidatorBehavior   IsCheckEmpty="True" MinLength="0" MaxLength="255"  x:Name="lastname"/>
+                                    </local:ImageEntry.Behaviors>-->
+                                </local:ImageEntry>
+                                <!--<Label TextColor="#f79651" FontSize="15" Text="{Binding Source={x:Reference firstname}, Path=Message}" IsVisible="{Binding Source={x:Reference lastname}, Path=IsVisibleMessage}" />-->
+                            </StackLayout>
+
+                        </StackLayout>
+                        
+                        <!--<StackLayout>
+                            <Label Text="Gender" FontSize="14" TextColor="#1d1d26" Opacity="0.6" />
+                            <StackLayout Orientation="Horizontal" Spacing="15">
+                                <StackLayout Orientation="Horizontal">
+                                    <Button Clicked="femalebtn" x:Name="female" VerticalOptions="CenterAndExpand" WidthRequest="14" HeightRequest="14" BorderRadius="7" BorderWidth="2" BorderColor="#60afdf"/>
+                                    <Label Text="Female" FontSize="14" TextColor="#1d1d26" Opacity="0.6" VerticalTextAlignment="Center"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Button Clicked="malebtn" VerticalOptions="CenterAndExpand" x:Name="male" WidthRequest="14" HeightRequest="14" BorderRadius="7"   BorderWidth="2" BorderColor="#60afdf"/>
+                                    <Label Text="Male" FontSize="14" TextColor="#1d1d26" Opacity="0.6" VerticalTextAlignment="Center"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>-->
+
+
+
+                        <!--gender-->
+                        <StackLayout >
+                            <Label Text="Gender" FontSize="18" TextColor="#1d1d26" Opacity="0.6"  />
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Image x:Name="Female"  HeightRequest="20" WidthRequest="20"   Source="RadiooUn">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3">
+
+                                            </TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label FontSize="16" TextColor="#60afdf" Opacity="1" Text="Female"/>
+                                </StackLayout>
+
+                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                    <Image x:Name="Male"  IsEnabled="{Binding isenabel,Mode=TwoWay}"  HeightRequest="20" WidthRequest="20" Source="RadiooUn">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2">
+
+                                            </TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label FontSize="16" TextColor="#60afdf" Opacity="1" Text="Male"/>
+
+                                </StackLayout>
+
+                            </StackLayout>
+                        </StackLayout>
+                        <!--gender-->
+
+                        <StackLayout Padding="0,0,0,10">
+                            <BoxView BackgroundColor="#7f8c8d"  Opacity="0.5" VerticalOptions="End" HeightRequest="1"  />
+                        </StackLayout>
+                        
+
+
+                        <StackLayout>
+                            <Label Text="Date of Birth" FontSize="18" TextColor="#1d1d26" Opacity="0.6"/>
+                            <Label x:Name="DateLabel" Text=" - Select Date - " FontSize="15" TextColor="#60afdf">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OpenDatePicker"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <DatePicker x:Name="birthdate" Opacity="0.5" DateSelected="birthdate_DateSelected"  Date="{Binding BirthDate,Mode=TwoWay}" HeightRequest="16" IsVisible="False"/>
+                        
+                        </StackLayout>
+
+                        <StackLayout Padding="0,0,0,10">
+                            <BoxView BackgroundColor="#7f8c8d"  Opacity="0.5" VerticalOptions="End" HeightRequest="1"  />
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label Text="Mobile" FontSize="18" TextColor="#1d1d26" Opacity="0.6"/>
+                            <local:ImageEntry Text="{Binding Phonelocal, Mode=TwoWay}" Opacity="1"   Placeholder="333-333-3333" x:Name="phone"  TextChanged="phone_TextChanged"  FontSize="15" Keyboard="Numeric" PlaceholderColor="#60afdf" TextColor="#60afdf">
+                                <!--<local:ImageEntry.Behaviors>
+                                    <vo:EntryValidatorBehavior   IsCheckEmpty="True" IsCheckTelephone="True" MinLength="8" MaxLength="11" x:Name="PhoneValidator"/>
+                                </local:ImageEntry.Behaviors>-->
+                            </local:ImageEntry>
+                            <!--<Label TextColor="#f79651" FontSize="15" Text="{Binding Source={x:Reference PhoneValidator}, Path=Message}" IsVisible="{Binding Source={x:Reference PhoneValidator}, Path=IsVisibleMessage}"/>-->
+                        </StackLayout>
+                        
+
+                        <StackLayout>
+                            <Label Text="Email" FontSize="18" TextColor="#1d1d26" Opacity="0.6" />
+                            <Label Text="{Binding Emaillocal}" Margin="0,7,0,0"  FontSize="19"  Opacity="1" TextColor="#60afdf"/>
+                        </StackLayout>
+                        <StackLayout Padding="0,0,0,10">
+                            <BoxView BackgroundColor="#7f8c8d"  Opacity="0.5" VerticalOptions="End" HeightRequest="1"  />
+                        </StackLayout>
+                        
+
+                        <StackLayout>
+                            <Label Text="Zipcode" FontSize="18" TextColor="#1d1d26" Opacity="0.6" />
+                            <local:ImageEntry Opacity="1"  Text="{Binding ZipCode,Mode=TwoWay}"  Placeholder="12345" FontSize="16" Keyboard="Numeric" PlaceholderColor="#60afdf" TextColor="#60afdf">
+                                <!--<local:ImageEntry.Behaviors>
+                                    <vo:EntryValidatorBehavior IsCheckEmpty="True" IsCheckZipcode="True"  MinLength="3" MaxLength="5" x:Name="zipcodelength"/>
+                                </local:ImageEntry.Behaviors>-->
+                            </local:ImageEntry>
+                            <!--<Label TextColor="#f79651" FontSize="15" Text="{Binding Source={x:Reference zipcodelength}, Path=Message}" IsVisible="{Binding Source={x:Reference zipcodelength}, Path=IsVisibleMessage}" />-->
+                        </StackLayout>
+
+
+                        <Button  Text="Save" FontSize="13" VerticalOptions="Center" Command="{Binding PutBasicinfo}"  IsEnabled="{Binding isenabel}"   HorizontalOptions="Center" HeightRequest="40" WidthRequest="150"   BorderRadius="20" TextColor="White" BackgroundColor="#f79651"/>
+                    </StackLayout>
+
+                </ScrollView>
+            </Grid>
+
+            <Grid Grid.Row="2" x:Name="passwordgrid">
+                <ScrollView Grid.Row="0" >
+                    <StackLayout  x:Name="passwordlayout" Padding="10" Spacing="10" Margin="10,0,10,10">
+                        <StackLayout>
+                            <Label Text="Current Password" FontSize="18"/>
+                            <local:ImageEntry Opacity="1"   PlaceholderColor="#60afdf" FontSize="16"  TextColor="#60afdf" Placeholder="Enter password" Text="{Binding OldPassword,Mode=TwoWay}" IsPassword="true" >
+                                <local:ImageEntry.Behaviors>
+                                    <vo:EntryValidatorBehavior MinLength="6"  x:Name="passwordcheck" IsCheckEmpty="True" IsCheckpassword="True"/>
+                                </local:ImageEntry.Behaviors>
+                            </local:ImageEntry>
+                            <Label TextColor="#f79651" FontSize="15" Text="{Binding Source={x:Reference passwordcheck}, Path=Message}" IsVisible="{Binding Source={x:Reference passwordcheck}, Path=IsVisibleMessage}" />
+                        </StackLayout>
+                        
+                        <StackLayout>
+                            <Label Text="New Password" FontSize="18"/>
+                            <local:ImageEntry  PlaceholderColor="#60afdf" Opacity="1"   FontSize="16"  TextColor="#60afdf"  Placeholder="Enter password" Text="{Binding NewPassword,Mode=TwoWay}" IsPassword="true">
+                                <local:ImageEntry.Behaviors>
+                                    <vo:EntryValidatorBehavior MinLength="6"  x:Name="newpass" IsCheckEmpty="True" IsCheckpassword="True"/>
+                                </local:ImageEntry.Behaviors>
+                            </local:ImageEntry>
+                            <Label TextColor="#f79651" FontSize="15" Text="{Binding Source={x:Reference newpass}, Path=Message}" IsVisible="{Binding Source={x:Reference newpass}, Path=IsVisibleMessage}" />
+                        </StackLayout>
+                        
+                        <StackLayout>
+                            <Label Text="Confirm Password" FontSize="18"/>
+                            <local:ImageEntry Placeholder="Enter password"  Opacity="1"  FontSize="16"  TextColor="#60afdf"  PlaceholderColor="#60afdf" Text="{Binding Retype,Mode=TwoWay}" IsPassword="true">
+                                <local:ImageEntry.Behaviors>
+                                    <vo:EntryValidatorBehavior MinLength="6"  x:Name="retype" IsCheckEmpty="True" IsCheckpassword="True"/>
+                                </local:ImageEntry.Behaviors>
+                            </local:ImageEntry>
+                            <Label TextColor="#f79651" FontSize="15" Text="{Binding Source={x:Reference retype}, Path=Message}" IsVisible="{Binding Source={x:Reference retype}, Path=IsVisibleMessage}" />
+                        </StackLayout>
+                        <Button FontSize="13" Command="{Binding changepasswords}"  IsEnabled="{Binding isenabel}" VerticalOptions="Center" Text="Change" HorizontalOptions="Center" HeightRequest="40" WidthRequest="150"   BorderRadius="20" TextColor="White" BackgroundColor="#f79651"/>
+                       
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+
+        </Grid>
+        
+    </Grid>
+</ContentPage>

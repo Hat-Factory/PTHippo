@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+
+             x:Class="Pt_Hippo_Mobile.Views.Stripe.striperegister" >
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <customcontrols:CustomNavigationBar Grid.Row="0" NavigationBarType="MasterDetail" Title="My Bank"/>
+
+        <StackLayout Margin="0,-5,0,0" Orientation="Vertical" Grid.Row="1">
+ 
+                <WebView x:Name="web_Stripe"  HorizontalOptions="FillAndExpand" Navigating="web_Stripe_Navigating"
+                    Navigated="web_Stripe_Navigated" VerticalOptions="FillAndExpand" />
+
+        </StackLayout>
+         <ActivityIndicator Color="Orange" IsVisible="True" Grid.Row="1" x:Name="bar"   />
+
+
+    </Grid>
+    
+</ContentPage>
+
+
+ 

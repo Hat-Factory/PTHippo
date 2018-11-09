@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using Pt_Hippo_Mobile.ViewModel;
+using Xamarin.Forms;
+using Pt_Hippo_Mobile.Helpers;
+
+
+namespace Pt_Hippo_Mobile.Views
+{
+    public partial class SelectDay : ContentPage
+    {
+        public SelectDay()
+        {
+            LoadingIndicatorHelper.Intialize(this);
+            InitializeComponent();
+            BindingContext = new timedetailviewmodel(Navigation);
+            date.MinimumDate = DateTime.Now;
+            from.Time = DateTime.Today.TimeOfDay;
+            to.Time = DateTime.Today.TimeOfDay;
+            date.Date = DateTime.Today.Date;
+<<<<<<< HEAD
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return base.OnBackButtonPressed();
+=======
+>>>>>>> master
+        }
+
+    }
+}

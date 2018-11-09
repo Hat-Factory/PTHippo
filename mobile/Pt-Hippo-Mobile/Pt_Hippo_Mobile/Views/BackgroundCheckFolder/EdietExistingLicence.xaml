@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+              xmlns:lvm="clr-namespace:Pt_Hippo_Mobile.ViewModel.ReportsViewModel"
+             BackgroundImage="bg_trans"
+             xmlns:vo="clr-namespace:Pt_Hippo_Mobile.Vaildation;assembly=Pt_Hippo_Mobile"
+             x:Class="Pt_Hippo_Mobile.Views.BackgroundCheckFolder.EdietExistingLicence">
+    <ContentPage.BindingContext>
+        <lvm:DocumentsReports/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <customcontrols:CustomNavigationBar Grid.Row="0" NavigationBarType="NavigationPage" x:Name="ScreenTitlenavbar"/>
+
+            <Grid Grid.Row="1" Padding="5" Margin="20,0,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <StackLayout >
+                        <Label x:Name="titletype"  TranslationX="3"   TextColor="Gray" />
+                        <customcontrols:ImageEntry x:Name="filetitle"  TextChanged="filetitle_TextChanged"  FontSize="14"   TextColor="#60afdf" PlaceholderColor="#60afdf"  TranslationY="-17" Text="{Binding Title,Mode=TwoWay}">
+                            <customcontrols:ImageEntry.Behaviors>
+                                <vo:EntryValidatorBehavior  IsCheckEmpty="True"   x:Name="title"/>
+                            </customcontrols:ImageEntry.Behaviors>
+                        </customcontrols:ImageEntry>
+                        <Label TextColor="#f79651" TranslationY="-7" Text="{Binding Source={x:Reference title}, Path=Message}" IsVisible="{Binding Source={x:Reference title}, Path=IsVisibleMessage}" />
+
+                    </StackLayout>
+                </Grid>
+
+
+                <Grid Grid.Row="1" >
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout Padding="0,2,0,0" Margin="0,2,0,0">
+                            <Label IsVisible="false"  FontSize="14" HorizontalOptions="FillAndExpand"  Text="{Binding ShowName}" TextColor="Orange"  />
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+
+                <StackLayout Grid.Row="2" Orientation="Horizontal"  >
+                    <Label Text="Creation Date " TextColor="Gray" />
+                    <Label x:Name="datelabel"  Text="{Binding creationdate}" />
+                </StackLayout>
+
+
+                <Grid  Grid.Row="3" >
+                    <Grid   >
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout WidthRequest="150"   HeightRequest="50"  Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
+                            <Button x:Name="btnUpload" Text="Upload"  IsEnabled="{Binding isenabel,Mode=TwoWay}"  Command="{Binding PickPhoto,Mode=TwoWay}" WidthRequest="150"   HeightRequest="50" Opacity="0.5" TextColor="#1d1d26" BackgroundColor="#D9DBDE" />
+
+                        </StackLayout>
+
+                        <StackLayout   Grid.Row="0" Grid.Column="1" >
+                            <Label FontSize="16" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand"  Text="{Binding ShowName}" TextColor="Orange" />
+                        </StackLayout>
+
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Button Text="Save" x:Name="savebtn" IsEnabled="{Binding isenabel}" HorizontalOptions="Center"  Command="{Binding save_edit}" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@drawable/img">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16.7sp"
+        android:textColor="#ffffff"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="10sp"
+        android:text="Welcome to"
+        android:layout_marginTop="150dp"
+        android:fontFamily="LucidaGrande"
+        android:layout_marginLeft="40.2dp"
+        android:layout_marginRight="115.2dp"
+        android:id="@+id/textView1" />
+    <ImageView
+        android:layout_width="166dp"
+        android:layout_height="51dp"
+        android:src="@drawable/logo"
+        android:layout_below="@+id/textView1"
+        android:id="@+id/imageView1" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="8.7sp"
+        android:textColor="#ffffff"
+        android:lineSpacingExtra="0sp"
+        android:layout_marginTop="400dp"
+        android:text="Copyright 2017" />
+</LinearLayout>

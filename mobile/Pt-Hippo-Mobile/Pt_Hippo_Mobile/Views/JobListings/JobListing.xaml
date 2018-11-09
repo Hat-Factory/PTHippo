@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage   xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Pt_Hippo_Mobile.ViewModel"
+             xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+             xmlns:custom="clr-namespace:Xamarin.RangeSlider.Forms;assembly=Xamarin.RangeSlider.Forms"
+             xmlns:local="clr-namespace:Pt_Hippo_Mobile.Controls"
+             xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             x:Class="Pt_Hippo_Mobile.Views.JobListings.JobListing">
+    <Grid x:Name="maincv">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid x:Name="mainGrid" IsVisible="True" Grid.Row="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <customcontrols:CustomNavigationBar   NavigationBarType="MasterDetail" Title="Jobs" />
+
+
+
+
+            <Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1" Grid.RowSpan="3"/>
+
+            <Grid x:Name="namegrid" HeightRequest="45" Grid.Row="1" ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Label x:Name="NoOfCurrentJobs" Text="{Binding CurrentCounter}"  Grid.Column="0"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ChangeToCurrent"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+
+                <Label x:Name="NoOfsavedJobs" Text="{Binding Saved}"   Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ChangeToSaved"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+
+                <Label x:Name="NoOfAppliedJobs" Text="{Binding Applied}" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ChangeToApplied"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView x:Name="UnderlineBoxView"  HeightRequest="3" Color="#f79651 " VerticalOptions="End"/>
+            </Grid>
+
+
+            <Grid x:Name="CurrentJobsLayout" Grid.Row="2"   Padding="5" >
+                <customcontrols:InfiniteListView  x:Name="CurrentJobsList" 
+                  
+             ItemsSource="{Binding JobSearchBindcast}"       
+	        LoadMoreCommand="{Binding LoadMoreCommand}" 
+                                             
+                                             
+             BackgroundColor="Transparent" SeparatorVisibility="None" RowHeight="110">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid x:Name="JobsList" Padding="5, 0">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="gr" CommandParameter="{Binding Id}" Tapped="TapGestureRecognizer_Tapped">
+                                        </TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="0.75*"/>
+                                        <RowDefinition Height="0.75*"/>
+                                        <RowDefinition Height="0.75*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="{Binding jobTitle}" TextColor="#f79651" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                                    <Image x:Name="Starsave" Source="{Binding Image}" HeightRequest="50" WidthRequest="50" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="0" >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="imagetap" Tapped="imagetaps_Tapped"   CommandParameter="{Binding Id}">
+                                            </TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+
+                                    <!--<Label Text="{Binding JobType}" TextColor="DimGray" FontSize="Micro" VerticalOptions="Start" Grid.Row="1"/>-->
+
+                                    <StackLayout Orientation="Horizontal" Grid.Row="1" HorizontalOptions="Start">
+
+                                        <Image Source="time" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+
+                                        <Label Text="{Binding DateTimeFormated}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal" Grid.Row="1" HorizontalOptions="End">
+                                        <Image Source="money" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+                                        <Label Text="{Binding minHrRate}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Grid.Row="2" >
+                                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                                            <Image Source="location" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+                                            <Label Text="{Binding locationAdress}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                                            <Image Source="parking" HeightRequest="20" WidthRequest="20"   />
+                                            <Label Text="{Binding hasbarkingstrig}" TextColor="#f79651" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal"  HorizontalOptions="End">
+                                            <Image Source="bus" HeightRequest="20" WidthRequest="20"   />
+                                            <Label Text="{Binding HasPublicTransportationstring}" TextColor="DimGray" FontSize="Small"/>
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                    <BoxView  HeightRequest="1"   Color="Silver" VerticalOptions="End" Grid.Row="3"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </customcontrols:InfiniteListView>
+            </Grid>
+
+
+
+            <Grid x:Name="SavedJobsLayout" Padding="5" Grid.Row="2">
+                <Grid.BindingContext>
+                    <vm:savedjobsViewModel/>
+                </Grid.BindingContext>
+
+                <ListView x:Name="SavedJobsList" ItemSelected="SavedJobsList_ItemSelected"  ItemsSource="{Binding JobSearchBindcast}" BackgroundColor="Transparent" SeparatorVisibility="None" RowHeight="110">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5, 0">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="gr" CommandParameter="{Binding Id}" Tapped="TapGestureRecognizer_Tapped">
+                                        </TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="0.75*"/>
+                                        <RowDefinition Height="0.75*"/>
+                                        <RowDefinition Height="0.75*"/>
+                                    </Grid.RowDefinitions>
+
+
+                                    <Label Text="{Binding jobTitle}" TextColor="#f79651" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                                    <!--<Label Text="{Binding JobType}" TextColor="DimGray" FontSize="Micro" VerticalOptions="Start" Grid.Row="1"/>-->
+
+                                    <Image x:Name="Starsave" Source="star" HeightRequest="50" WidthRequest="50" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="0" >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="imagetaps" Tapped="imagetaps_Tapped"   CommandParameter="{Binding Id}">
+                                            </TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <StackLayout Orientation="Horizontal" Grid.Row="1" HorizontalOptions="Start">
+
+                                        <Image Source="time" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+                                        <Label Text="{Binding DateTimeFormated}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal" Grid.Row="1" HorizontalOptions="End">
+
+                                        <Image Source="money" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+
+                                        <Label Text="{Binding minHrRate}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Grid.Row="2" >
+                                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+
+                                            <Image Source="location" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+                                            <Label Text="{Binding locationAdress}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+
+                                            <Image Source="parking" HeightRequest="20" WidthRequest="20"   />
+                                            <Label Text="{Binding hasbarkingstrig}" TextColor="#f79651 " FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal"  HorizontalOptions="End">
+
+                                            <Image Source="bus" HeightRequest="20" WidthRequest="20"   />
+                                            <Label Text="{Binding HasPublicTransportationstring}" TextColor="DimGray" FontSize="Small"/>
+                                        </StackLayout>
+
+                                    </StackLayout>
+
+                                    <BoxView  HeightRequest="1"  Color="Silver" VerticalOptions="End" Grid.Row="3"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+
+            <Grid x:Name="AppliedJobsLayout" Padding="5" Grid.Row="2">
+                <Grid.BindingContext>
+                    <vm:AppliedJobsViewModel/>
+                </Grid.BindingContext>
+
+                <ListView x:Name="AppliedJobsList" CachingStrategy="RecycleElement" ItemSelected="AppliedJobsList_ItemSelected" ItemsSource="{Binding JobSearchBindcast}" BackgroundColor="Transparent" SeparatorVisibility="None" RowHeight="110">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5, 0">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="gr" CommandParameter="{Binding Id}" Tapped="TapGestureRecognizer_Tapped">
+                                        </TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="0.75*"/>
+                                        <RowDefinition Height="0.75*"/>
+                                        <RowDefinition Height="0.75*"/>
+                                    </Grid.RowDefinitions>
+
+
+                                    <Label Text="{Binding jobTitle}" TextColor="#f79651" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+
+
+                                    <!--<Image Source="more.png" HeightRequest="5" WidthRequest="30" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="0" />-->
+
+                                    <!--<Label Text="{Binding JobType}" TextColor="DimGray" FontSize="Micro" VerticalOptions="Start" Grid.Row="1"/>-->
+
+                                    <StackLayout Orientation="Horizontal" Grid.Row="1" HorizontalOptions="Start">
+
+                                        <Image Source="time" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+                                        <Label Text="{Binding DateTimeFormated}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal" Grid.Row="1" HorizontalOptions="End">
+
+                                        <Image Source="money" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+
+                                        <Label Text="{Binding minHrRate}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Grid.Row="2" >
+                                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+
+                                            <Image Source="location" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+                                            <Label Text="{Binding locationAdress}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+
+                                            <Image Source="parking" HeightRequest="20" WidthRequest="20"   />
+                                            <Label Text="{Binding hasbarkingstrig}" TextColor="#f79651" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal"  HorizontalOptions="End">
+
+                                            <Image Source="bus" HeightRequest="20" WidthRequest="20"   />
+                                            <Label Text="{Binding HasPublicTransportationstring}" TextColor="DimGray" FontSize="Small"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <BoxView  HeightRequest="1"  Color="Silver" VerticalOptions="End" Grid.Row="3"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+
+            <Grid x:Name="FilterGrid" Grid.Row="1" Grid.RowSpan="2" HeightRequest="220" Padding="5,0" BackgroundColor="#edf8ff" IsVisible="False" Opacity="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1*"/>
+                    <!--<RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>-->
+                </Grid.RowDefinitions>
+
+
+                <StackLayout Margin="10,15,0,0" VerticalOptions="FillAndExpand" Grid.Row="0">
+                    <Label Text="Zip code" FontSize="18" TextColor="DimGray" />
+                    <local:ImageEntry Opacity="1" Margin="0,0,0,0"  Text="{Binding ZipCode,Mode=TwoWay}"  Placeholder="12345" FontSize="16" Keyboard="Numeric" PlaceholderColor="#60afdf" TextColor="#60afdf">
+                        <!--<local:ImageEntry.Behaviors>
+                                    <vo:EntryValidatorBehavior IsCheckEmpty="True" IsCheckZipcode="True"  MinLength="3" MaxLength="5" x:Name="zipcodelength"/>
+                                </local:ImageEntry.Behaviors>-->
+                    </local:ImageEntry>
+                    <!--<Label Text="|||"  Opacity=".0"  />-->
+                </StackLayout>
+
+                <StackLayout  Grid.Row="1"  Margin="10,7,0,0" Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout Margin="0,5,0,0" HorizontalOptions="FillAndExpand">
+                        <Label TextColor="DimGray" Text="Start date" />
+                        <DatePicker TextColor="#60afdf" x:Name="startDate"  DateSelected="startDate_DateSelected" Date="{Binding startdate,Mode=TwoWay}" />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand" Margin="0,5,20,0">
+                        <Label TextColor="DimGray" Text="End date" />
+                        <DatePicker TextColor="#60afdf" x:Name="endDate"  DateSelected="endDate_DateSelected" Date="{Binding enddate,Mode=TwoWay}" />
+                    </StackLayout>
+                </StackLayout>
+                <Grid Grid.Row="2" Margin="10,-5,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="3*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Row="0"  Grid.ColumnSpan="3"  HorizontalOptions="FillAndExpand" TextColor="DimGray" Text="Hourly rate" FontSize="18" />
+                    <StackLayout Grid.Row="1" Grid.Column="1"   Margin="0,-10,0,0" x:Name="sliderstack"  >
+                        <custom:RangeSlider  LowerValueChanged="RangeSlider_LowerValueChanged" UpperValueChanged="RangeSlider_UpperValueChanged" x:Name="RangeSlider" MinimumValue="1" MaximumValue="99" LowerValue="{Binding minhourrate , Mode=TwoWay}" UpperValue="{Binding maxhourate , Mode=TwoWay}" StepValue="0" StepValueContinuously="False" VerticalOptions="Center" TextSize="15"  WidthRequest="300"/>
+                    </StackLayout>
+                    <StackLayout   WidthRequest="20" Margin="0,-10,0,0"   x:Name="slidedata"  Grid.Row="1" Grid.Column="0" Orientation="Horizontal" >
+
+                        <Label x:Name="fromvalue" VerticalTextAlignment="Center" HorizontalOptions="Start" Text=" " />
+
+                    </StackLayout>
+                    <StackLayout    WidthRequest="20" Margin="0,-10,0,0" Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
+
+                        <Label x:Name="tovalue" VerticalTextAlignment="Center" Text="" HorizontalOptions="End" />
+                    </StackLayout>
+
+                </Grid>
+
+                <Grid  VerticalOptions="Start"  Grid.Row="3" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Text="Search" x:Name="search" Grid.Column="1" Grid.Row="0"  Clicked="closeSearchViewafterSearch" HorizontalOptions="Center" HeightRequest="40" WidthRequest="150"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                    <Button Text="Clear"  x:Name="clear" Grid.Column="2" Grid.Row="0"    Clicked="closeClearSearchViewafterSearch" HorizontalOptions="Center" HeightRequest="40" WidthRequest="150"  BorderRadius="20" TextColor="White" BackgroundColor="DimGray"  />
+                </Grid>
+            </Grid>
+
+            <Grid HeightRequest="60" Grid.Row="3" ColumnSpacing="0" x:Name="selectgridtabs">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout x:Name="searchtap"  BackgroundColor="White" Grid.Column="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"  />
+                    </StackLayout.GestureRecognizers>
+                    <Image x:Name="isearchtap" Margin="0,10,0,0" HeightRequest="25" WidthRequest="25" Source="Magnifier" VerticalOptions="Center"  HorizontalOptions="Center" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label x:Name="searchtapLabel"  FontSize="13" Text="Search"  TextColor="DimGray"  HorizontalTextAlignment="Center" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"  />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <StackLayout  BackgroundColor="White" x:Name="MyJobstap" Grid.Column="1">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"  />
+                    </StackLayout.GestureRecognizers>
+                    <Image x:Name="iMyJobstap" Margin="0,10,0,0" HeightRequest="25" WidthRequest="25" Source="MyJobs"    HorizontalOptions="Center" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label x:Name="MyJobstapLabel"  FontSize="13" Text="My Jobs"  TextColor="DimGray"  HorizontalTextAlignment="Center"  >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"  />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <StackLayout x:Name="timesheettext" BackgroundColor="White" Grid.Column="2">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3" />
+                    </StackLayout.GestureRecognizers>
+                    <Image x:Name="itimesheettext" Margin="0,10,0,0" HeightRequest="25" WidthRequest="25" Source="Timesheet"    HorizontalOptions="Center" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label x:Name="timesheettextLabel" Text="Time Sheet" FontSize="13"  TextColor="DimGray" HorizontalTextAlignment="Center" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <StackLayout BackgroundColor="White" x:Name="Availabilitytext" Grid.Column="3">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4" />
+                    </StackLayout.GestureRecognizers>
+                    <Image x:Name="iAvailabilitytext" Margin="0,10,0,0" HeightRequest="25" WidthRequest="25" Source="Availability" HorizontalOptions="Center" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label x:Name="AvailabilitytextLabel" FontSize="13" Text="Availability"  TextColor="DimGray"  HorizontalTextAlignment="Center" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </Grid>
+        </Grid>
+        <Grid   x:Name="cooloring" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions> 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <forms:CarouselView x:Name="MainCarouselView" ItemSelected="MainCarouselView_OnItemSelected" Grid.Row="0" Grid.Column="0">
+                    <forms:CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding .}" />
+                        </DataTemplate>
+                    </forms:CarouselView.ItemTemplate>
+                </forms:CarouselView>
+            </Grid>
+            <Grid Grid.Row="1"> 
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10" Orientation="Horizontal">
+                    <!--<Button x:Name="NextButton" Text="Next" HorizontalOptions="Center" VerticalOptions="Center" Clicked="NextSliderImage" HeightRequest="40" WidthRequest="150"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />-->
+                    <Button x:Name="SkipButton" Text="Skip" HorizontalOptions="Center" VerticalOptions="Center" Clicked="SkippComaand" HeightRequest="40" WidthRequest="150"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                </StackLayout> 
+            </Grid>
+        </Grid>
+    </Grid>
+
+</ContentPage>

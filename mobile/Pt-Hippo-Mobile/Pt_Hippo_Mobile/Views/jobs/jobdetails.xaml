@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pt_Hippo_Mobile.Views.jobs.jobdetails"
+              xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             BackgroundImage="bg_trans"
+             xmlns:jobviewmodel="clr-namespace:Pt_Hippo_Mobile.ViewModel">
+    <ContentPage.BindingContext>
+        <jobviewmodel:jobsDetailsViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <customcontrols:CustomNavigationBar  NavigationBarType="Modal" Title="Job Details" /> 
+        <Grid Grid.Row="1"  IsVisible="True" x:Name="firstgrid" HorizontalOptions="Fill" VerticalOptions="Fill"   >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="7*" />
+            </Grid.RowDefinitions>
+
+            <Grid  Grid.Row="0"> 
+                <!--mapview-->
+                <maps:Map x:Name="map" VerticalOptions="FillAndExpand" >
+                </maps:Map>
+                <!--mapview-->
+                <!--TODO:AI MAP DISAPLE--> 
+            </Grid>
+            <ScrollView Grid.Row="1">
+                <Grid Padding="10" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid HorizontalOptions="FillAndExpand"  Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" x:name="statustext" HorizontalOptions="CenterAndExpand">
+                            <Label x:Name="statustextname" FontSize="Medium" Text="{Binding _jobModel.applicantStatusText}" TextColor="#f79651" />
+                        </StackLayout>
+                        <!--Actions Buttons-->
+                        <StackLayout Grid.Row="1" x:Name="twobuttons"  HorizontalOptions="CenterAndExpand">
+                            <Button x:Name="B3" IsVisible="False" Text="Checkin"   Clicked="B3_Clicked" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                            <Button x:Name="B4" IsVisible="False" Text="Checkout"  Clicked="B4_Clicked" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                        </StackLayout>
+                        <!--Actions Buttons-->
+                        <StackLayout Grid.Row="2" HorizontalOptions="FillAndExpand" Orientation="Horizontal" >
+                            <StackLayout  HorizontalOptions="StartAndExpand">
+
+                                <Label FontSize="Large" TextColor="#f79651" Text="Expire in" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="EndAndExpand">
+                                <Label Text="{Binding edstring}" FontSize="Large" TextColor="#f79651"  />
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                    
+                    <StackLayout Grid.Row="1">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2" VerticalOptions="End" >
+                        </BoxView>
+                    </StackLayout>
+                    
+                    <!--job-->
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="2">
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label TextColor="DimGray" FontAttributes="Bold" Text="Job" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand">
+                            <Label TextColor="#1d1d26" Text="{Binding _jobModel.jobTypeAbbreviation}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--job-->
+                    <StackLayout Grid.Row="3">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2" VerticalOptions="End"/>
+                    </StackLayout>
+
+                    <Grid HorizontalOptions="FillAndExpand" Grid.Row="4">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout HorizontalOptions="StartAndExpand"  Orientation="Horizontal" Grid.Column="0" >
+                            <StackLayout  HorizontalOptions="StartAndExpand">
+                                <Label TextColor="DimGray" FontAttributes="Bold" Text="State" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="EndAndExpand">
+                                <Label TextColor="#1d1d26" x:Name="address" Text="{Binding _jobModel.employerState}" />
+                            </StackLayout>
+                        </StackLayout>
+                        <!-- sorry for this lazy hack :/ -->
+                        <StackLayout Grid.Column="1" HorizontalOptions="CenterAndExpand">
+                            <Label Text="||||||"  Opacity=".0"/>
+                        </StackLayout>
+                        <!-- sorry for this lazy hack :/ -->
+                        <StackLayout Grid.Column="2" HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label  FontAttributes="Bold" TextColor="DimGray" Text="Miles:" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="EndAndExpand">
+                                <Label  TextColor="#1d1d26" Text="{Binding _jobModel.distance}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                    <!--statte-->
+                    <StackLayout Grid.Row="5">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  VerticalOptions="End"/>
+                    </StackLayout>
+                    <!--hours-->
+                    <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal" Grid.Row="6">
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label TextColor="DimGray" FontAttributes="Bold" Text="Hours" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand">
+                            <Label TextColor="#1d1d26" Text="{Binding _jobModel.fromtostring}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--hours-->
+                    <StackLayout Grid.Row="7">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  VerticalOptions="End"/>
+                    </StackLayout>
+                    <!--Schedule-->
+                    <Grid VerticalOptions="Fill" HorizontalOptions="StartAndExpand" Grid.Row="8" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" >
+                                <Label TextColor="#60afdf" Text="Days " FontAttributes="Bold" />
+                                <Label TextColor="#60afdf" FontSize="Medium" Text=" ˅ " />
+                            </StackLayout>
+                            <StackLayout  HorizontalOptions="EndAndExpand">
+                                <Label TextColor="#1d1d26" FontAttributes="Bold" Text="{Binding _jobModel.fromtodateString}" />
+                            </StackLayout>
+                            <Label />
+                        </StackLayout> 
+                        <ListView Grid.Row="1" BackgroundColor="Transparent"    x:Name="lx"   ItemsSource="{Binding Path=jobscollection}"  HasUnevenRows="True" VerticalOptions="FillAndExpand" HeightRequest="220" SeparatorColor="Transparent" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <Grid  HorizontalOptions="FillAndExpand" >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Row="0" Grid.Column="0">
+                                                    <!--we do a change here-->
+                                                    <Image HeightRequest="30" WidthRequest="30" Source="{Binding imagesource}" >
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" CommandParameter="{Binding id }">
+                                                            </TapGestureRecognizer>
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </StackLayout>
+                                                <StackLayout  Grid.Row="0" Grid.Column="1" >
+                                                    <Label Text="{Binding Datefromto}" />
+                                                </StackLayout>
+                                            </Grid>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+
+                    <StackLayout Grid.Row="11">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  VerticalOptions="End"/>
+                    </StackLayout>
+                    <!--parking-->
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="12">
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label FontAttributes="Bold" TextColor="DimGray" Text="Parking" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand">
+                            <Label TextColor="#1d1d26" Text="{Binding Parking}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--Parking-->
+                    <StackLayout Grid.Row="13">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  VerticalOptions="End"/>
+                    </StackLayout>
+
+                    <!--public transportation-->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Grid.Row="14">
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label FontAttributes="Bold" TextColor="DimGray" Text="Public transportation" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand">
+                            <Label TextColor="#1d1d26" Text="{Binding PublicTransportation}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--public transportation-->
+                    <StackLayout Grid.Row="15">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  VerticalOptions="End"/>
+                    </StackLayout>
+                    <!--Hour Rate-->
+                    <StackLayout   Grid.Row="16" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <StackLayout HorizontalOptions="Start">
+                            <Label  FontAttributes="Bold" TextColor="DimGray" Text="Hour Rate" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand">
+                            <Slider   ValueChanged="Slder_ValueChanged" x:Name="Slder" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="End">
+                            <Label TextColor="#1d1d26" x:Name="sldrtxt" Text="{Binding _jobModel.maxHrRate}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--Hour Rate-->
+                    <StackLayout Grid.Row="17">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  VerticalOptions="End"/>
+                    </StackLayout>
+                    <!--Notes-->
+                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="18">
+                        <StackLayout HorizontalOptions="FillAndExpand">
+                            <Label  TextColor="DimGray" FontAttributes="Bold" Text="Notes" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand">
+                            <Label  TextColor="#1d1d26" Text="{Binding _jobModel.note}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--Notes-->
+
+                    <StackLayout Grid.Row="19">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  VerticalOptions="End"/>
+                    </StackLayout>
+                    <!--Skills-->
+                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="20">
+                        <StackLayout HorizontalOptions="FillAndExpand">
+                            <Label  TextColor="DimGray" FontAttributes="Bold" Text="Skills" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand">
+                            <Label TextColor="Black"  x:Name="skilstr" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--Skills-->
+
+                    <StackLayout Grid.Row="21">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"   VerticalOptions="End"/>
+                    </StackLayout>
+                    <!--workAttireAvailable-->
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="22">
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label  TextColor="DimGray" FontAttributes="Bold" Text="Work attire" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand">
+                            <Label TextColor="Black"  Text="{Binding _jobModel.workAttireAvailablestring}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--workAttireAvailable-->
+                    <StackLayout Grid.Row="23">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"   VerticalOptions="End"/>
+                    </StackLayout>
+                    <!--scrubAvailable-->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Grid.Row="24">
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label  TextColor="DimGray" FontAttributes="Bold" Text="Scrub" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand">
+                            <Label TextColor="Black"  Text="{Binding _jobModel.scrubAvailablestring}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--scrubAvailable-->
+                    <StackLayout Grid.Row="25">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"   VerticalOptions="End"/>
+                    </StackLayout>
+                    <!--labCoatAvailable-->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Grid.Row="26">
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label  TextColor="DimGray" FontAttributes="Bold" Text="Lab coat" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand">
+                            <Label TextColor="Black"  Text="{Binding _jobModel.labCoatAvailablestring}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--labCoatAvailable-->
+                    <StackLayout Grid.Row="27">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"   VerticalOptions="End"/>
+                    </StackLayout>
+
+
+                    <!--Actions Buttons-->
+                    <Grid Grid.Row="28" HorizontalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="B1" IsVisible="False" Text="Apply" Grid.Row="0" Clicked="Button_Clicked_3" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                        <Button x:Name="B5" IsVisible="False" Text="Cancel Job"  Grid.Row="1"  Clicked="B5_Clicked" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                        <Button x:Name="B6" IsVisible="False" Text="Confirm" Grid.Row="0"  Clicked="B6_Clicked" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                    </Grid>
+                    <!--Actions Buttons-->
+                </Grid>
+            </ScrollView>
+        </Grid>
+        <Grid Padding="30" x:Name="secondGrid" Grid.Row="2" IsVisible="False" HorizontalOptions="Fill" VerticalOptions="Fill" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Margin="0,10,0,0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2">
+                    </TapGestureRecognizer>
+                </StackLayout.GestureRecognizers>
+                <Label TextColor="#f79651" Text="X" HorizontalOptions="End" VerticalOptions="Start">
+                </Label>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="CenterAndExpand" Grid.Row="1">
+                <StackLayout  HorizontalOptions="CenterAndExpand">
+                    <Label TextColor="DimGray" Text="Apply to Job" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout  Grid.Row="2"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout  HorizontalOptions="CenterAndExpand">
+                    <Label  x:Name="ratetext" TextColor="#60afdf" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout  Grid.Row="3"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout  HorizontalOptions="CenterAndExpand">
+                    <Label  Text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum " TextColor="#60afdf" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand" Grid.Row="4">
+                <ListView BackgroundColor="Transparent" x:Name="dateselecedlistview"  HasUnevenRows="True" VerticalOptions="FillAndExpand" HeightRequest="150" SeparatorColor="Transparent" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid  HorizontalOptions="FillAndExpand" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Row="0" Grid.Column="0">
+                                            <!--TODO : Eslam-->
+                                            <Label Text="{Binding DayNumber}" />
+                                        </StackLayout>
+                                        <StackLayout  Grid.Row="0" Grid.Column="1" >
+                                             <Label Text="{Binding Datefromto}" /> 
+                                            <!--TODO : Eslam-->
+                                        </StackLayout>
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Text="Apply" Command="{Binding GetData}" x:Name="ApplyButton" Clicked="Button_Clicked_4" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                <Button Grid.Column="1" Text="Cancel" x:Name="CancelButtonn" Clicked="CancelButtonn_Clicked" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+            </Grid>
+        </Grid>
+        <Grid Padding="30" x:Name="ThirdGrid" Grid.Row="2" IsVisible="False" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Margin="0,10,0,0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4">
+
+                    </TapGestureRecognizer>
+                </StackLayout.GestureRecognizers>
+                <Label TextColor="#f79651" Text="X" HorizontalOptions="End" VerticalOptions="Start">
+
+                </Label>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="CenterAndExpand" Grid.Row="1">
+
+                <StackLayout  HorizontalOptions="CenterAndExpand">
+                    <Label TextColor="#f79651" Text="Congratulation" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout  Grid.Row="2"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout  HorizontalOptions="CenterAndExpand">
+                    <Label  Text="You Have been just hired to" TextColor="Black" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout  Grid.Row="3"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout  HorizontalOptions="CenterAndExpand">
+                    <Label  x:Name="confirmjobname" FontSize="Large" HorizontalOptions="CenterAndExpand"  TextColor="#60afdf" />
+                    <Label x:Name="postedby" Text="" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout  HorizontalOptions="FillAndExpand" Orientation="Horizontal"  Grid.Row="4">
+                <StackLayout  HorizontalOptions="StartAndExpand">
+                    <Label TextColor="DimGray" Text="Hired on date" />
+                </StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand">
+                    <Label TextColor="#1d1d26"  x:Name="HiringDate" Text="" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.Row="5">
+                <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2" VerticalOptions="End"/>
+            </StackLayout>
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Text="Confirm"  x:Name="confirmhiring"  Clicked="Button_Clicked_5" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                <Button  Grid.Column="0" Text="Cancel"  x:Name="cancelConfirmHiring"  Clicked="cancelConfirmHiring_Clicked" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+            </Grid>
+        </Grid>
+    </Grid>
+
+</ContentPage>

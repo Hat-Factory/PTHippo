@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Pt_Hippo_Mobile.Views.MyPagetimedetail" 
+    xmlns:vm="clr-namespace:Pt_Hippo_Mobile.ViewModel;assembly=Pt_Hippo_Mobile"
+    xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls" >
+    <ContentPage.BindingContext>
+        <vm:jobtimesheetdetailviewmodel/>
+    </ContentPage.BindingContext>
+    <Grid RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <customcontrols:CustomNavigationBar NavigationBarType="Modal" Title= "Time Sheet"/>
+
+        <Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1" Grid.RowSpan="3"/>
+
+
+        <Grid  x:Name="timedetail"  Margin="0,-20,0,0" Grid.Row="2" >
+            <ScrollView>
+                <Grid Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!--location-->
+                    <StackLayout Grid.Row="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" >
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label  TextColor="#f79651" HorizontalOptions="StartAndExpand"  Text="Location" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label TextColor="Black" HorizontalOptions="EndAndExpand"  Text="{Binding Employername}"  />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--location-->
+                    <StackLayout Grid.Row="1">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  VerticalOptions="End"/>
+                    </StackLayout>
+                    <!--Distance && Address-->
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <!--Distance-->
+                        <StackLayout Grid.Column="0" Orientation="Vertical" HorizontalOptions="StartAndExpand"  >
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label  TextColor="#f79651"   Text="Distance" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                <Label TextColor="Black"  Text="{Binding Distance}"/>
+                                <Label TextColor="Black"  Text="MI"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <!--Distance-->
+
+                        <!--Address-->
+                        <!--HorizontalOptions="EndAndExpand"-->
+                        <StackLayout  Grid.Column="1" Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label  TextColor="#f79651"   Text="Address" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label TextColor="Black"   Text="{Binding _Address}" />
+                            </StackLayout>
+                        </StackLayout>
+                        <!--Address-->
+                    </Grid>
+                    <!--Distance && Address-->
+                    <StackLayout Grid.Row="3">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  VerticalOptions="End"/>
+                    </StackLayout>
+
+                    <!--Agreed && Date-->
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <!--Agreed-->
+                        <StackLayout Grid.Column="0" Orientation="Vertical" HorizontalOptions="StartAndExpand"  >
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label  TextColor="#f79651" Text="Agreed" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                <Label TextColor="Black" Text="$"/>
+                                <Label Margin="-6,0,0,0" TextColor="Black"  Text="{Binding Rate}" />
+                            </StackLayout>
+                        </StackLayout>
+                        <!--Agreed-->
+
+                        <!--Date-->
+                        <!--HorizontalOptions="EndAndExpand"-->
+                        <StackLayout Grid.Column="1"  Orientation="Vertical"  HorizontalOptions="StartAndExpand" >
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label  TextColor="#f79651"   Text="Date" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label TextColor="Black"  Text="{Binding WorkDate}" />
+                            </StackLayout>
+                        </StackLayout>
+                        <!--Date-->
+                    </Grid>
+                    <!--Agreed && Date-->
+                    <StackLayout Grid.Row="5">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  VerticalOptions="End"/>
+                    </StackLayout>
+
+                    <!--Schedule-->
+                    <StackLayout Grid.Row="6" Orientation="Vertical" HorizontalOptions="FillAndExpand"  >
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label  TextColor="#f79651"   Text="Schedule" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label TextColor="Black"  Text="{Binding Schedule}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--Schedule-->
+
+                    <StackLayout Grid.Row="7">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  VerticalOptions="End"/>
+                    </StackLayout>
+                    <!--Actual && Hours-->
+                    <Grid Grid.Row="8" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <!--Actual-->
+                        <StackLayout Grid.Column="0" Orientation="Vertical" HorizontalOptions="StartAndExpand"  >
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label  TextColor="#f79651"   Text="Actual" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label TextColor="Black"  Text="{Binding Acutal}" />
+                            </StackLayout>
+                        </StackLayout>
+                        <!--Actual-->
+                        <!--Hours-->
+                        <StackLayout Grid.Column="1" Orientation="Vertical" HorizontalOptions="StartAndExpand"  >
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label  TextColor="#f79651"   Text="Hours" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label TextColor="Black"  Text="{Binding HourValue}" />
+                            </StackLayout>
+                        </StackLayout>
+                        <!--Hours-->
+                    </Grid>
+                    <!--Actual && Hours-->
+
+                    <StackLayout Grid.Row="9">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  VerticalOptions="End"/>
+                    </StackLayout>
+
+                    <!--Paymentstatus-->
+                    <Grid Grid.Row="10" HorizontalOptions="FillAndExpand" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout  Grid.Column="0"  HorizontalOptions="StartAndExpand">
+                            <Label  TextColor="#f79651" HorizontalOptions="StartAndExpand"  Text="Payment status" />
+                        </StackLayout>
+                        <StackLayout  Grid.Column="1"  HorizontalOptions="StartAndExpand">
+                            <Label TextColor="Black" HorizontalOptions="EndAndExpand"  Text="{Binding Paymentstatus}"  />
+                        </StackLayout>
+                    </Grid>
+                    <!--Paymentstatus-->
+
+                    <StackLayout Grid.Row="11">
+                        <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  VerticalOptions="End"/>
+                    </StackLayout>
+
+
+                    <!--Notes-->
+                    <Grid Grid.Row="12" HorizontalOptions="FillAndExpand" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" HorizontalOptions="StartAndExpand">
+                            <Label  TextColor="#f79651" HorizontalOptions="StartAndExpand"  Text="Notes" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" HorizontalOptions="StartAndExpand">
+                            <Label TextColor="Black" HorizontalOptions="EndAndExpand"   Text="{Binding Notes}"   />
+                        </StackLayout>
+                    </Grid>
+                    <!--Notes-->
+
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </Grid>
+</ContentPage>

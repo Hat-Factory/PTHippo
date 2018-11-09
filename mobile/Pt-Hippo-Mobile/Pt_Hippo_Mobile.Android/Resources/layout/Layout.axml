@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16.7sp"
+        android:textColor="#ffffff"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="10sp"
+        android:gravity="center_horizontal"
+        android:text="Welcome to" />
+    <ImageView
+        android:layout_width="166dp"
+        android:layout_height="51dp"
+        android:gravity="center_horizontal"
+        android:src="@drawable/logo"
+        android:layout_marginTop="136.7dp"
+        android:layout_marginBottom="257dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="41.7dp" />
+</LinearLayout>

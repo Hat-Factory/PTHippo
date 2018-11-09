@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Pt_Hippo_Mobile.ViewModel;assembly=Pt_Hippo_Mobile"
+               xmlns:vail="clr-namespace:Pt_Hippo_Mobile.Vaildation;assembly=Pt_Hippo_Mobile" 
+               xmlns:ef="clr-namespace:Pt_Hippo_Mobile.Effects"
+              xmlns:local="clr-namespace:Pt_Hippo_Mobile.Controls"
+             x:Class="Pt_Hippo_Mobile.Views.SignUpPartTwo" 
+             >
+
+    <ContentPage.BindingContext>
+        <viewmodel:RegisterViewModel x:Name="register"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+            <Color x:Key="primary">#ffffff</Color>
+            <Color x:Key="ColorPrimary">#60afdf</Color>
+            <Color x:Key="SignUp" >#60afdf</Color>
+            <Color x:Key="titlecolor">#7f8c8d</Color>
+            <Color x:Key="splitcolor">#f79651</Color>
+        </ResourceDictionary>
+
+
+
+    </ContentPage.Resources>
+ 
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+
+                <StackLayout>
+                    <!--<Button Clicked="Button_Clicked" BackgroundColor="Transparent" Text="←" HorizontalOptions="StartAndExpand" FontSize="Large" />-->
+                    <!--<StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Button_Clicked">
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>-->
+                    <!--<Button Clicked="Button_Clicked" BackgroundColor="Transparent" Text="←" HorizontalOptions="StartAndExpand" FontSize="Large" />-->
+                    <!--<Image  Margin="10,30,10,10" HeightRequest="30" WidthRequest="30"  HorizontalOptions="StartAndExpand" Source="back_orange" >-->
+                        <Image Margin="10,30,10,10" WidthRequest="28" HeightRequest="28"  VerticalOptions="Center" HorizontalOptions="StartAndExpand" Source="back_orange" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Button_Clicked">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical">
+                    <Image x:Name="logo" Source="logo.png" HorizontalOptions="CenterAndExpand" />
+                    <Label  Text="Sign up" TextColor="#60afdf" FontSize="25" HorizontalOptions="CenterAndExpand"  />
+                </StackLayout>
+
+
+
+
+                <StackLayout Margin="10,10,10,25" x:Name="BackGroundColor" Padding="10" Spacing="5">
+                    <!--Specializaon-->
+                    <!--<StackLayout HorizontalOptions="FillAndExpand" >
+                        <Label FontSize="Medium" Text="Specialization" TextColor="{StaticResource titlecolor}"/>
+                        <Picker x:Name="Specialization" Title="Select one"   
+                                SelectedIndexChanged="Specialization_SelectedIndexChanged" 
+                                ItemsSource="{Binding JobType,Mode=TwoWay}"  ItemDisplayBinding="{Binding title}" SelectedItem="{Binding SelectedItem,Mode=TwoWay}"  TextColor="{StaticResource ColorPrimary}">
+                        </Picker>
+                    </StackLayout>-->
+
+                    <StackLayout x:Name="splayout" HorizontalOptions="FillAndExpand" >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SpecializationClicked">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <Label FontSize="18" Text="Specialization" TextColor="{StaticResource titlecolor}"/>
+                        <StackLayout Orientation="Horizontal" >
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <!--<Label FontSize="Medium"  Text="Select one" TextColor="{StaticResource ColorPrimary}" Opacity=".0" >
+                                </Label>-->
+                                <Label FontSize="16" Text="Select one" x:Name="jobTypeName"  TextColor="{StaticResource ColorPrimary}" />
+                            </StackLayout>
+                         
+                        </StackLayout>
+                        <StackLayout Padding="0,0,0,10">
+                            <BoxView BackgroundColor="#7f8c8d" Opacity="0.5" VerticalOptions="End" HeightRequest="1"  />
+                        </StackLayout>
+                        <StackLayout>
+                            <!-- <StackLayout >
+                                <Label FontSize="Medium"   x:Name="jobTypeName"  TextColor="{StaticResource ColorPrimary}" />
+                            </StackLayout>-->
+                        <!--<Label FontSize="Medium"   x:Name="jobTypeName"  TextColor="{StaticResource ColorPrimary}" />
+                        
+                        <StackLayout Padding="0,0,0,10">
+                            <BoxView BackgroundColor="#7f8c8d" Opacity="0.5" VerticalOptions="End" HeightRequest="1"  />
+                        </StackLayout>-->
+                        <!--<BoxView  HeightRequest="2"  Color="#bcbcbf" VerticalOptions="End" Grid.Row="4"/>-->
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!--Specializaon-->
+
+                    <!--Years Of Experince and Languge Skills-->
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                        <!--Years Of Experince-->
+                        <StackLayout HorizontalOptions="FillAndExpand" WidthRequest="190">
+                            <Label FontSize="18" Text="Years of Experience "   TextColor="{StaticResource titlecolor}"/>
+                            <local:ImageEntry   TextChanged="yearsofexperience_TextChanged" Opacity="1"   Keyboard="Numeric" WidthRequest="10" HeightRequest="50" Margin="0,-21,0,0"  x:Name="yearsofexperience"  FontSize="16"  Text="{Binding Enteryearsofexperience,Mode=TwoWay}"  TextColor="{StaticResource ColorPrimary}"  PlaceholderColor="#60afdf" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <!--Years Of Experince-->
+
+                        <!--Languge Skills-->
+                        <StackLayout x:Name="Ls" HorizontalOptions="FillAndExpand" WidthRequest="90">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_6">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label FontSize="18" Text="Languages" TextColor="{StaticResource titlecolor}"/>
+                            <StackLayout x:Name="selectstack" >
+                                <StackLayout >
+                                    <Label  x:Name="selectedLanguge" FontSize="16" Text="Select one" TextColor="{StaticResource ColorPrimary}" />
+                                </StackLayout>
+
+                                <StackLayout Padding="0,0,0,10" TranslationY="3">
+                                    <BoxView BackgroundColor="#7f8c8d" Opacity="0.5" VerticalOptions="End" HeightRequest="1"  />
+                                </StackLayout>
+
+
+                            </StackLayout>
+                        </StackLayout>
+                        <!--Languge Skills-->
+                    </StackLayout>
+                    <!--Years Of Experince and Languge Skills-->
+
+
+
+                    <!--SoftwareSkills-->
+                    <StackLayout x:Name="ss" HorizontalOptions="FillAndExpand" Margin="0,6,0,0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_8">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <Label FontSize="18" Text="Software skills" TextColor="{StaticResource titlecolor}"/>
+                        <StackLayout Margin="0,-5,0,0" >
+                            <StackLayout >
+                                <Label   x:Name="selectedComputer" FontSize="16" Text="Select one" TextColor="{StaticResource ColorPrimary}" />
+                            </StackLayout>
+
+                            <StackLayout Padding="0,0,0,10">
+                                <BoxView BackgroundColor="#7f8c8d" Opacity="0.5" VerticalOptions="End" HeightRequest="1"  />
+                            </StackLayout>
+
+                            <!--<StackLayout>
+                                    <Image Source="trait_separation" >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4">
+                                            </TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>-->
+
+                        </StackLayout>
+                    </StackLayout>
+                    <!--SoftwareSkills-->
+
+
+                    <!--OtherSkills-->
+                    <StackLayout x:Name="os" HorizontalOptions="FillAndExpand" Margin="0,6,20,0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_10">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <Label FontSize="18" Text="Speciality skills" TextColor="{StaticResource titlecolor}"/>
+                        <StackLayout Margin="0,-5,0,0" >
+                            <StackLayout >
+                                <Label   x:Name="selectedOther" FontSize="16" Text="Select one" TextColor="{StaticResource ColorPrimary}" />
+                            </StackLayout>
+
+                            <StackLayout Padding="0,0,0,10">
+                                <BoxView BackgroundColor="#7f8c8d" Opacity="0.5" VerticalOptions="End" HeightRequest="1"  />
+                            </StackLayout>
+
+                            <!--<StackLayout>
+                                <StackLayout>
+                                    <Image Source="trait_separation" >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
+                                            </TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                            </StackLayout>-->
+                        </StackLayout>
+                    </StackLayout>
+                    <!--OtherSkills-->
+
+                    <!--sign up button-->
+                    <StackLayout Margin="0,5,0,0" >
+                        <Button TextColor="White" Text="Sign Up"  IsEnabled="{Binding isenabel}" BackgroundColor="#f79651 "  Command="{Binding Done}"   HorizontalOptions="Center" BorderRadius="20"  FontSize="15" WidthRequest="150" HeightRequest="40"/>
+                    </StackLayout>
+                    <!--sign up button-->
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

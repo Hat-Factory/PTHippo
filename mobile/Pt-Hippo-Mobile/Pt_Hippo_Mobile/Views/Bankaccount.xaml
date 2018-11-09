@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Pt_Hippo_Mobile.ViewModel;assembly=Pt_Hippo_Mobile"
+             xmlns:vail="clr-namespace:Pt_Hippo_Mobile.Vaildation;assembly=Pt_Hippo_Mobile" 
+             xmlns:local="clr-namespace:Pt_Hippo_Mobile.Controls"
+           xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+             x:Class="Pt_Hippo_Mobile.Views.Bankaccount">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#ffffff</Color>
+            <Color x:Key="ColorPrimary">#60afdf</Color>
+            <Color x:Key="SignUp" >#60afdf</Color>
+            <Color x:Key="titlecolor">#7f8c8d</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <customcontrols:CustomNavigationBar NavigationBarType="MasterDetail" Title="My Bank" />
+
+        <Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1" Grid.RowSpan="3"/>
+        <ScrollView Grid.Row="2"  >
+            <StackLayout x:Name="colooring" Padding="5" Spacing="5" >
+                <StackLayout x:Name="allcontent" Padding="10,10,10,10">
+                    <StackLayout>
+                        <StackLayout>
+                            <Label FontSize="18" Text="Bank name" TextColor="{StaticResource titlecolor}"/>
+                            <local:ImageEntry  Opacity="1" Text="{Binding bankName , Mode=TwoWay}"  Keyboard="Text"   FontSize="16"   PlaceholderColor="{StaticResource ColorPrimary}" TextColor="{StaticResource ColorPrimary}" HorizontalOptions="FillAndExpand"></local:ImageEntry>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label  FontSize="18" Text="Account number" TextColor="{StaticResource titlecolor}"/>
+                            <local:ImageEntry Opacity="1"  Text="{Binding accountNumber ,Mode=TwoWay}"  Keyboard="Text"   FontSize="16"   PlaceholderColor="{StaticResource ColorPrimary}" TextColor="{StaticResource ColorPrimary}" HorizontalOptions="FillAndExpand"></local:ImageEntry>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label FontSize="18" Text="Routing number" TextColor="{StaticResource titlecolor}"/>
+                            <local:ImageEntry Opacity="1"  Text="{Binding routingNumber , Mode=TwoWay}"  Keyboard="Text"  FontSize="16"  PlaceholderColor="{StaticResource ColorPrimary}" TextColor="{StaticResource ColorPrimary}" HorizontalOptions="FillAndExpand"></local:ImageEntry>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout>
+                        <StackLayout>
+                            <Label FontSize="18" Text="Street" TextColor="{StaticResource titlecolor}"/>
+                            <local:ImageEntry Opacity="1"  Text="{Binding street ,Mode=TwoWay}"  Keyboard="Text"  FontSize="16"   PlaceholderColor="{StaticResource ColorPrimary}" TextColor="{StaticResource ColorPrimary}" HorizontalOptions="FillAndExpand"></local:ImageEntry>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label FontSize="18" Text="City" TextColor="{StaticResource titlecolor}"/>
+                            <local:ImageEntry Opacity="1"  FontSize="16"   Text="{Binding city ,Mode=TwoWay}"  Keyboard="Text"   PlaceholderColor="{StaticResource ColorPrimary}" TextColor="{StaticResource ColorPrimary}" HorizontalOptions="FillAndExpand"></local:ImageEntry>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <StackLayout >
+                                <Label Text="State" FontSize="18" TextColor="{StaticResource titlecolor}"/>
+                                <!--<Picker  VerticalOptions="Center" Title="{Binding SateName}" ItemsSource="{Binding StatesList}"  SelectedItem="{Binding SelectedItem,Mode=TwoWay}" ItemDisplayBinding="{Binding stateAbb}" TextColor="{StaticResource ColorPrimary}" WidthRequest="80"/>-->
+                                <local:ImageEntry  Opacity="1"  FontSize="16"  TranslationY="-9" VerticalOptions="Center" TextColor="{StaticResource ColorPrimary}"  WidthRequest="80" TextChanged="statechangedtext" Text="{Binding SateName}" x:Name="stateentry"/>
+                            </StackLayout>
+                            <StackLayout Margin="20,0,0,0">
+                                <Label  FontSize="18" Text="Zip code" TextColor="{StaticResource titlecolor}"/>
+                                <local:ImageEntry Opacity="1"  FontSize="16" TranslationY="-9" VerticalOptions="Center"  TextColor="{StaticResource ColorPrimary}"  WidthRequest="80" Text="{Binding zipCode, Mode=TwoWay}"   Keyboard="Text" HorizontalOptions="FillAndExpand"  PlaceholderColor="{StaticResource ColorPrimary}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                    <Button Command="{Binding Accountinfo}"  IsEnabled="{Binding isenabel,Mode=TwoWay}" Text="Save" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  Margin="67,10,67,10" BorderRadius="20" TextColor="White" BackgroundColor="#f79651 "/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+    

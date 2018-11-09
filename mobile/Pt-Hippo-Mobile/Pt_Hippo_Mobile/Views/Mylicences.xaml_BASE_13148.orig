@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Pt_Hippo_Mobile.Views.Mylicences"
+    xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+    xmlns:rvm="clr-namespace:Pt_Hippo_Mobile.ViewModel">
+	 <ContentPage.BindingContext>
+      <rvm:GetLicenceView />
+    </ContentPage.BindingContext>
+        <Grid RowSpacing="0" >
+         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+       
+        <customcontrols:CustomNavigationBar NavigationBarType="MasterDetail" Title="Licence"/>
+
+        <Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1"/>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Blue" VerticalOptions="Center" Grid.Row="1"/>
+
+           <ListView x:Name="mydata" CachingStrategy="RecycleElement"  ItemsSource="{Binding Path=LicensesDataListView, Mode=TwoWay}" BackgroundColor="Transparent" SeparatorVisibility="None" RowHeight="95" Grid.Row="1">
+                <ListView.ItemTemplate>
+                <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                <MenuItem Clicked="edit_btn" Icon="edit.png" CommandParameter="{Binding id}"
+               Text="Edit" />
+                <MenuItem Clicked="btn_delete" Icon="trash.png"  CommandParameter="{Binding id}"
+               Text="Delete" IsDestructive="True" />
+               </ViewCell.ContextActions>
+                           <Grid Padding="3" Margin="0,15,0,0">
+                            <Grid.RowDefinitions>
+<<<<<<< HEAD
+                                <RowDefinition Height="4.5*"/>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="4*"/>
+=======
+                                <RowDefinition Height="4.4*"/>
+                                <RowDefinition Height="3.5*"/>
+                                <RowDefinition Height="3.5*"/>
+>>>>>>> master
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <BoxView WidthRequest="3" Color="#f5a623" HorizontalOptions="Center" Grid.RowSpan="3"/>
+
+                            <Label Text="{Binding typeText}"  TextColor="#60afdf" FontSize="22" Grid.Row="0" Grid.Column="1"/>
+                             <Label Text="{Binding description}" Opacity="0.5" TextColor="#1d1d26" FontSize="17" Grid.Row="1" Grid.Column="1"/>
+                            <Label Text="ExpirationDate:" Grid.Row="2" Grid.Column="1" TextColor="#1d1d26" FontSize="17" Opacity="0.5"/>
+                            <Label Text="{Binding expirationDateText}" TranslationY="-3" TranslationX="130" TextColor="#1d1d26" FontSize="17" Opacity="0.5" Grid.Row="2" Grid.Column="1"/>
+                        </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        <Button Image="add_copy.png"    Clicked="Handle_Clicked"  BackgroundColor="Transparent" WidthRequest="80" HeightRequest="80"  HorizontalOptions="End" VerticalOptions="End" Margin="20" Grid.Row="1"/>
+        </Grid>
+      
+</ContentPage>

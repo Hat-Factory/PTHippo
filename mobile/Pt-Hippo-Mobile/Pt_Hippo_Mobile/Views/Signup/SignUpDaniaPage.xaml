@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pt_Hippo_Mobile.Views.SignUpDaniaPage"
+             xmlns:viewmodel="clr-namespace:Pt_Hippo_Mobile.ViewModel;assembly=Pt_Hippo_Mobile"
+             xmlns:vail="clr-namespace:Pt_Hippo_Mobile.Vaildation;assembly=Pt_Hippo_Mobile" 
+             xmlns:local="clr-namespace:Pt_Hippo_Mobile.Controls"
+             xmlns:ef="clr-namespace:Pt_Hippo_Mobile.Effects"
+             xmlns:bc="clr-namespace:ButtonCircle.FormsPlugin.Abstractions;assembly=ButtonCircle.FormsPlugin.Abstractions"             
+             >
+
+
+     
+    <ContentPage.BindingContext>
+        <viewmodel:RegisterViewModel x:Name="register"/> 
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <Color x:Key="primary">#ffffff</Color>
+            <Color x:Key="ColorPrimary">#60afdf</Color>
+            <Color x:Key="SignUp" >#60afdf</Color>
+            <Color x:Key="titlecolor">#7f8c8d</Color>
+        </ResourceDictionary>
+
+     </ContentPage.Resources>
+
+    <ContentPage.Content>
+     
+        <ScrollView>
+            <StackLayout>
+                
+                <StackLayout>
+                    <!--<Button Clicked="Button_Clicked" BackgroundColor="Transparent" Text="←" HorizontalOptions="StartAndExpand" FontSize="Large" />-->
+                    <!--<StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Button_Clicked">
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>-->
+                    <!--<Button Clicked="Button_Clicked" BackgroundColor="Transparent" Text="←" HorizontalOptions="StartAndExpand" FontSize="Large" />-->
+                    <Image Margin="10,30,10,10" WidthRequest="28" HeightRequest="28"  VerticalOptions="Center" HorizontalOptions="StartAndExpand" Source="back_orange" >
+                        
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Button_Clicked">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+             
+                <StackLayout x:Name="kk" Orientation="Vertical">
+                        <Image x:Name="logo" Source="logo.png" HorizontalOptions="CenterAndExpand" />
+                        <Label  Text="Sign up" TextColor="#60afdf" FontSize="25" HorizontalOptions="CenterAndExpand"  />
+                    </StackLayout>
+
+                <StackLayout Margin="10,10,10,25" x:Name="BackGroundColor" Padding="10" Spacing="5">
+                    <!--firstname and LastName-->
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                        <StackLayout HorizontalOptions="FillAndExpand">
+                            <Label  FontSize="18" Text="First Name" TextColor="{StaticResource titlecolor}"/>
+                            <local:ImageEntry Keyboard="Text" PlaceholderColor="{StaticResource ColorPrimary}"
+                                              TextColor="{StaticResource ColorPrimary}"  Opacity="1"   x:Name="firstName" Text="{Binding firstName}" 
+                                              HorizontalOptions="FillAndExpand"
+                                              Margin="0" FontSize="16">
+                                <local:ImageEntry.Behaviors>
+                                    <vail:EntryValidatorBehavior   IsCheckEmpty="True" MinLength="0" MaxLength="255"  x:Name="firstname"/>
+                                </local:ImageEntry.Behaviors>
+                            </local:ImageEntry>
+                            <Label FontSize="17" x:Name="firstnames" TextColor="#f79651" Text="{Binding Source={x:Reference firstname}, Path=Message}" IsVisible="{Binding Source={x:Reference firstname}, Path=IsVisibleMessage}" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand" >
+                            <Label FontSize="18" Text="Last Name" TextColor="{StaticResource titlecolor}"/>
+                            <local:ImageEntry PlaceholderColor="{StaticResource ColorPrimary}"  Opacity="1"  FontSize="16" TextColor="{StaticResource ColorPrimary}"  x:Name="lastName"  Text="{Binding lastName}" HorizontalOptions="FillAndExpand">
+                                <local:ImageEntry.Behaviors>
+                                    <vail:EntryValidatorBehavior  IsCheckEmpty="True" MinLength="0" MaxLength="255" x:Name="lastname" />
+                                </local:ImageEntry.Behaviors>
+                            </local:ImageEntry>
+                            <Label FontSize="17" x:Name="lastnames" TextColor="#f79651" Text="{Binding Source={x:Reference lastname}, Path=Message}" IsVisible="{Binding Source={x:Reference lastname}, Path=IsVisibleMessage}"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <!--firstname and LastName-->
+                    <!--gender-->
+                    <StackLayout >
+                        <Label FontSize="Medium" Text="Gender" TextColor="{StaticResource titlecolor}" />
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Image x:Name="Female"  HeightRequest="20" WidthRequest="20"   Source="RadiooUn">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3">
+
+                                        </TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label FontSize="Medium" Text="Female"   TextColor="{StaticResource ColorPrimary}"/>
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <Image x:Name="Male"  HeightRequest="20" WidthRequest="20" Source="RadiooUn">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2">
+
+                                        </TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label FontSize="18" Text="Male"  TextColor="{StaticResource ColorPrimary}"/>
+
+                            </StackLayout>
+
+                        </StackLayout>
+                    </StackLayout>
+                    <!--gender-->
+
+                    <StackLayout Padding="0,0,0,10">
+                    <BoxView BackgroundColor="#7f8c8d"  Opacity="0.5" VerticalOptions="End" HeightRequest="1"  />
+                    </StackLayout>
+                    <!--sperator
+                     <StackLayout HorizontalOptions="FillAndExpand">
+                        <Image Source="trait_separation"   />
+                    </StackLayout>-->
+                    
+                    
+                    <!--sperator-->
+
+                    <!--zipCode-->
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label FontSize="18" Text="ZipCode" TextColor="{StaticResource  titlecolor}"/>
+                        <local:ImageEntry  Keyboard="Numeric"  Opacity="1"  FontSize="16" PlaceholderColor="{StaticResource ColorPrimary}"  TextColor="{StaticResource ColorPrimary}"  x:Name="zipCode"  Text="{Binding zipCode}"  HorizontalOptions="FillAndExpand">
+                            <local:ImageEntry.Behaviors>
+                                <vail:EntryValidatorBehavior IsCheckEmpty="True" IsCheckZipcode="True"  MinLength="3" MaxLength="9" x:Name="zipcodelength"/>
+                            </local:ImageEntry.Behaviors>
+                        </local:ImageEntry>
+                        <Label x:Name="zip"  FontSize="17" TextColor="#f79651" Text="{Binding Source={x:Reference zipcodelength}, Path=Message}" IsVisible="{Binding Source={x:Reference zipcodelength}, Path=IsVisibleMessage}" />
+                    </StackLayout>
+                    <!--ZipCode-->
+
+                    <!--Mobile-->
+                    <StackLayout>
+                        <Label FontSize="18" Text="Mobile" TextColor="{StaticResource titlecolor}"/>
+                        <local:ImageEntry  Opacity="1"     PlaceholderColor="{StaticResource ColorPrimary}"  TextChanged="mobile_TextChanged" x:Name="mobile"  Text="{Binding mobile}"
+                         Keyboard="Telephone" FontSize="16"
+                        HorizontalOptions="FillAndExpand">
+                            <local:ImageEntry.Behaviors>
+                                <vail:EntryValidatorBehavior   IsCheckEmpty="True" IsCheckTelephone="True"  x:Name="PhoneValidator"/>
+                            </local:ImageEntry.Behaviors>
+                        </local:ImageEntry>
+                        <Label FontSize="17" x:Name="phone" TextColor="#f79651" Text="{Binding Source={x:Reference PhoneValidator}, Path=Message}" IsVisible="{Binding Source={x:Reference PhoneValidator}, Path=IsVisibleMessage}" />
+                    </StackLayout>
+                    <!--Mobile-->
+
+
+                    <!--email-->
+                    <StackLayout>
+                        <Label FontSize="18" Text="E-mail" TextColor="{StaticResource titlecolor}"/>
+                        <local:ImageEntry TextColor="White" TextChanged="ImageEntry_TextChanged" PlaceholderColor="{StaticResource ColorPrimary}"  
+                         x:Name="email" FontSize="16" Opacity="1" 
+                        Text="{Binding email}" Keyboard="Email"
+                        HorizontalOptions="FillAndExpand">
+                            <local:ImageEntry.Behaviors>
+                                <vail:EntryValidatorBehavior  IsCheckEmpty="True"  IsCheckEmail="True" MinLength="0" MaxLength="255" x:Name="EmailValidator" />
+                            </local:ImageEntry.Behaviors>
+                        </local:ImageEntry>
+                        <Label  x:Name="emails"  FontSize="17" TextColor="#f79651" Text="{Binding Source={x:Reference EmailValidator}, Path=Message}"  IsVisible="{Binding Source={x:Reference EmailValidator}, Path=IsVisibleMessage}" />
+                    </StackLayout>
+                    <!--email-->
+                    <!--password-->
+                    <StackLayout>
+                        <Label FontSize="18" Text="Password" TextColor="{StaticResource titlecolor}"/>
+                        <local:ImageEntry   Opacity="1"   TextColor="{StaticResource ColorPrimary}" FontSize="16" IsPassword="True" x:Name="password" Text="{Binding password}" HorizontalOptions="FillAndExpand">
+                            <local:ImageEntry.Behaviors>
+                                <vail:EntryValidatorBehavior MinLength="6"  x:Name="passwordcheck" IsCheckEmpty="True" IsCheckpassword="True" />
+                            </local:ImageEntry.Behaviors>
+                            <local:ImageEntry.Effects>
+                                <ef:ShowHidePassEffect/>
+                            </local:ImageEntry.Effects>
+                        </local:ImageEntry>
+                        <Label FontSize="17" x:Name="pass" TextColor="#f79651" Text="{Binding Source={x:Reference passwordcheck}, Path=Message}" IsVisible="{Binding Source={x:Reference passwordcheck}, Path=IsVisibleMessage}" />
+                    </StackLayout>
+                
+                    <StackLayout >
+                        <Button TextColor="White" IsEnabled="{Binding isenabel}"  x:Name="nav" Text="Next"  BackgroundColor="#f79651 "   Command="{Binding RegisterCommand}"   HorizontalOptions="EndAndExpand" BorderRadius="20 "   FontSize="15" HeightRequest="40" WidthRequest="160" />
+                    </StackLayout>
+                   
+
+                </StackLayout>
+         
+            
+            </StackLayout>
+        </ScrollView>
+            
+        <!--</RelativeLayout>-->
+  
+
+    </ContentPage.Content>
+
+</ContentPage>

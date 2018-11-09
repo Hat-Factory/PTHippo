@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:Pt_Hippo_Mobile.Effects"
+              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+               x:Class="Pt_Hippo_Mobile.Views.NewJobDetail"
+     xmlns:jobviewmodel="clr-namespace:Pt_Hippo_Mobile.ViewModel"
+               xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls">
+    <ContentPage.BindingContext>
+        <jobviewmodel:jobsDetailsViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <customcontrols:CustomNavigationBar NavigationBarType="Modal" Title="Job Details" />
+        <Grid RowSpacing="0" x:Name="firstgrid"  Grid.Row="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="#87c8ee" x:Name="HeadGrid1" IsVisible="false" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout   Grid.RowSpan="3" Margin="0,-20,0,0" Grid.ColumnSpan="1" >
+                    <controls:CircleImage  x:Name="mapimage" Source="Map"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                        <controls:CircleImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OpenMapFullScreen" />
+                        </controls:CircleImage.GestureRecognizers>
+                    </controls:CircleImage>
+                </StackLayout>
+                <Grid Margin="-70,0,0,0" Grid.Row="1" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding _jobModel.jobTypeTitle}"   TextColor="White" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Image Source="image12" Grid.Row="1"/>
+                    <Label Text="{Binding _jobModel.address}"  Grid.Row="1" FontSize="12" VerticalTextAlignment="Center" TextColor="White"    HorizontalTextAlignment="Center" />
+                    <Image Source="image12" Grid.Row="2"/>
+                    <Label Text="{Binding _jobModel.distance}" Grid.Row="2"   FontSize="14" VerticalTextAlignment="Center"  TextColor="White"  HorizontalTextAlignment="Center" />
+                </Grid>
+            </Grid>
+            
+            <Grid BackgroundColor="#87c8ee" x:Name="HeadGrid2" IsVisible="true" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <!---->
+                <StackLayout   Grid.RowSpan="3" Margin="0,-20,0,0" Grid.ColumnSpan="1" >
+                    <controls:CircleImage  x:Name="mapimage1" Source="Map"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                        <controls:CircleImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OpenMapFullScreen" />
+                        </controls:CircleImage.GestureRecognizers>
+                    </controls:CircleImage>
+                </StackLayout>
+                <Grid Margin="0,0,0,0" Grid.Row="1" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding _jobModel.jobTypeTitle}"    TextColor="White" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Image Source="image12" Grid.Row="1"/>
+                    <Label Text="{Binding _jobModel.address}" Grid.Row="1" FontSize="12" VerticalTextAlignment="Center" TextColor="White"    HorizontalTextAlignment="Center" />
+                    <Image Source="image12" Grid.Row="2"/>
+                    <Label Text="{Binding _jobModel.distance}"  Grid.Row="2"   FontSize="14" VerticalTextAlignment="Center"  TextColor="White"  HorizontalTextAlignment="Center" />
+                </Grid>
+            </Grid>
+            
+             <Grid BackgroundColor= "#87c8ee"   x:Name= "HeadGrid3" IsVisible= "False" Grid.Row= "0">
+                 <!--Margin="0,-200,0,0"-->
+                <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height= "*" /> 
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width= "*" />
+                    <ColumnDefinition Width= "*"/>
+                </Grid.ColumnDefinitions> 
+                    <StackLayout Margin="0,-12,0,0" HorizontalOptions="Center" VerticalOptions="Center"  Grid.Row= "0"  Grid.Column= "0" >
+                    <controls:CircleImage  x:Name= "mapimage2" Source= "Map"  HorizontalOptions="CenterAndExpand" VerticalOptions= "CenterAndExpand" >
+                        <controls:CircleImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped= "OpenMapFullScreen" />
+                        </controls:CircleImage.GestureRecognizers>
+                    </controls:CircleImage>
+                </StackLayout> 
+                    <Grid Margin="-13,0,0,0" Grid.Row= "0" Grid.Column= "1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height= "Auto" />
+                        <RowDefinition Height= "Auto" />
+                        <RowDefinition Height= "Auto" /> 
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{Binding _jobModel.jobTypeTitle}" TextColor="White" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Grid Grid.Row="1" Grid.Column="0">
+                        <Image HeightRequest="200" WidthRequest="200" Source="image12" Grid.Row="0" Grid.Column="0" />
+                        <Label Text="{Binding _jobModel.address}"  Grid.Row="0" Grid.Column="0"  FontSize="12" VerticalTextAlignment="Center" TextColor="White"    HorizontalTextAlignment="Center" />
+                        </Grid>
+                        <Grid  Grid.Row="2" Grid.Column="0">
+                           <Image HeightRequest="200" WidthRequest="200" Source="image12" Grid.Row="0" Grid.Column="0"/>
+                           <Label Text="{Binding _jobModel.distance}"  Grid.Row="0"  Grid.Column="0" FontSize="14" VerticalTextAlignment="Center"  TextColor="White"  HorizontalTextAlignment="Center" />
+                        </Grid>
+                        
+                </Grid>
+                 </Grid> 
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <ScrollView >
+                    <Grid>
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="150"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <!--status Text-->
+                <StackLayout Grid.Row="0" x:name="statustext" HorizontalOptions="CenterAndExpand">
+                    <Label x:Name="statustextname" FontSize="Medium" Text="{Binding _jobModel.applicantStatusText}" TextColor="#f79651" />
+                </StackLayout>
+                <!--status Text-->
+
+                <!--Actions Buttons-->
+                <StackLayout Grid.Row="1" x:Name="twobuttons"  HorizontalOptions="CenterAndExpand">
+                    <Button x:Name="B3" IsVisible="False" Text="Checkin"   Clicked="B3_Clicked" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                    <Button x:Name="B4" IsVisible="False" Text="Checkout"  Clicked="B4_Clicked" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                </StackLayout>
+                <!--Actions Buttons-->
+
+                <!--Counter Timer-->
+                <Grid Grid.Row="2"  HeightRequest="90">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="1.5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout VerticalOptions="Center" Grid.ColumnSpan="3" HorizontalOptions="Center" Grid.Row="0" >
+                        <Label Text="Expire In"  x:Name="expiredlabel" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="18" />
+                    </StackLayout>
+
+
+                    <Image  Source="Untitled6.png" Grid.Column="0" Grid.Row="1"   />
+                    <StackLayout Grid.Column="0" Grid.Row="1" VerticalOptions="Center" >
+                        <Label Text="Days" VerticalOptions="Center"  HorizontalOptions="Center" VerticalTextAlignment="Center"  HorizontalTextAlignment="Center"  x:Name="stack1label" FontSize="16"/>
+                        <Label Text="{Binding Days}" VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" x:Name="stack1label2" FontSize="16"/>
+                    </StackLayout>
+                    <Image  Source="Untitled6.png" Grid.Column="1"   Grid.Row="1"   />
+                    <StackLayout Grid.Column="1" Grid.Row="1" VerticalOptions="Center"  >
+                        <Label Text="Hours" VerticalOptions="Center"  HorizontalOptions="Center" VerticalTextAlignment="Center"  HorizontalTextAlignment="Center"  x:Name="stack2label1" FontSize="16"/>
+                        <Label Text="{Binding Hours}" VerticalTextAlignment="Center"  HorizontalTextAlignment="Center"   x:Name="stack2label2" FontSize="16"/>
+                    </StackLayout>
+                    <Image  Source="Untitled6.png"  Grid.Column="2"   Grid.Row="1"  />
+                    <StackLayout  Grid.Column="2" Grid.Row="1"  VerticalOptions="Center"  >
+                        <Label Text="Minutes" VerticalOptions="Center"  HorizontalOptions="Center" VerticalTextAlignment="Center"  HorizontalTextAlignment="Center"  x:Name="stack3label1" FontSize="16"/>
+                        <Label Text="{Binding Minutes}"   VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" x:Name="stack3label2" FontSize="16"/>
+                    </StackLayout>
+                </Grid>
+                <!--Counter Timer-->
+
+                <!--first Table-->
+                <Grid  ColumnSpacing="1" BackgroundColor="Silver" Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="1" BackgroundColor="White">
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Public Transportation " FontSize="13" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                        <BoxView HeightRequest="3" HorizontalOptions="Center" WidthRequest="50" VerticalOptions="End" Margin="0,35,0,0" Color="#f79651"/>
+                        <Image Source="{Binding PublicTransportation}"  Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Grid>
+                    <Grid   Grid.Column="2" BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Parking" FontSize="13" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                        <BoxView HeightRequest="3" HorizontalOptions="Center" WidthRequest="50" VerticalOptions="End" Margin="0,35,0,0" Color="#f79651"/>
+                        <Image  Source="{Binding Parking}" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Grid>
+                    <Grid   Grid.Column="3" BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Offered Hourly Rate " FontSize="13" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                        <BoxView HeightRequest="3" HorizontalOptions="Center" WidthRequest="50" VerticalOptions="End" Margin="0,35,0,0"  Color="#f79651"/>
+                        <StackLayout Spacing="0.7" Grid.Row="1" Orientation="Horizontal" VerticalOptions="Center" Margin="0,10,0,0"  HorizontalOptions="Center">
+                            <Label TextColor="Black" Text="$" FontSize="18" WidthRequest="10" HeightRequest="10" />
+                            <Label TextColor="Black" x:Name="avrhrate" Text="{Binding _jobModel.minHrRate}" FontSize="19"  FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label TextColor="Black" Text="/hr" FontSize="18" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Grid>
+                    <BoxView Color="White"  Grid.Column="0" TranslationX="1"/>
+                    <BoxView Color="White" Grid.Column="4" TranslationX="-1"/>
+                    <BoxView Color="Silver" Grid.ColumnSpan="5" HeightRequest="1" VerticalOptions="Start"/>
+                    <BoxView Color="Silver" Grid.ColumnSpan="5" HeightRequest="1" VerticalOptions="End"/>
+                </Grid>
+                <!--first Table-->
+
+                <!--second Table-->
+                <Grid Margin="0,-6,0,0" ColumnSpacing="1" BackgroundColor="Silver" Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.6*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="0.6*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0"  Grid.Column="1" BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Lab Coat" FontSize="13" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                        <BoxView HeightRequest="3" HorizontalOptions="Center" WidthRequest="50" Margin="0,35,0,0" VerticalOptions="End" Color="#f79651"/>
+                        <Image Source="{Binding _jobModel.labCoatAvailablestring}" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="0"  Grid.Column="2" BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Scrub" FontSize="13" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                        <BoxView HeightRequest="3" HorizontalOptions="Center" WidthRequest="50" Margin="0,35,0,0" VerticalOptions="End" Color="#f79651"/>
+                        <Image Source="{Binding  _jobModel.scrubAvailablestring}" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+                    <BoxView Color="White" Grid.Column="3" TranslationX="-1"/>
+                    <BoxView Color="White" Grid.Column="0" TranslationX="1"/>
+                    <BoxView Color="Silver" Grid.ColumnSpan="4" HeightRequest="1" VerticalOptions="End"/>
+                </Grid>
+                <!--second Table-->
+
+
+                <!--Schedule-->
+                <Grid  Grid.Row="5" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" Orientation="Horizontal">
+                        <StackLayout Padding="5" HorizontalOptions="StartAndExpand" Orientation="Horizontal" >
+                            <Label TextColor="Black" Text="Date(s): " FontAttributes="Bold" />
+                        </StackLayout>
+                    </StackLayout>
+                            
+                                <ListView Grid.Row="1" ItemSelected="Lx_OnItemSelected"   BackgroundColor="Transparent" x:Name="lx" ItemsSource="{Binding Path=jobscollection}"  HasUnevenRows="True"   VerticalOptions="FillAndExpand" SeparatorColor="Transparent" >
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <ViewCell.View>
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto" />
+                                                            <RowDefinition Height="Auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Row="0" Grid.Column="0">
+                                                            <Image HeightRequest="30" WidthRequest="30" Source="{Binding imagesource,Mode=TwoWay}" >
+                                                                <Image.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" CommandParameter="{Binding id }">
+                                                                    </TapGestureRecognizer>
+                                                                </Image.GestureRecognizers>
+                                                            </Image>
+                                                        </StackLayout>
+                                                        <StackLayout  Grid.Row="0" Grid.Column="1" >
+                                                            <Label FontSize="16" Text="{Binding Datefromto}" />
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </ViewCell.View>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                  
+                </Grid>
+                <!--Schedule-->
+
+                <!--Skills-->
+                <Grid HorizontalOptions="FillAndExpand" Grid.Row="6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition  Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="8*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Row="0" Grid.Column="0"  Padding="5" HorizontalOptions="StartAndExpand">
+                        <Label  TextColor="Black" FontSize="16"  Text="Skills: " />
+                    </StackLayout>
+                     <StackLayout Margin="0,3,0,0" Grid.Row="0" Grid.Column="1"  HorizontalOptions="StartAndExpand">
+                        <Label TextColor="Black" FontSize="16"  x:Name="skilstr" />
+                    </StackLayout>
+                </Grid>
+                <!--Skills-->
+
+                <!--Applying Hourly Rate-->
+                <StackLayout Padding="10"  Grid.Row="7" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Grid   HorizontalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto"/>   
+                        </Grid.RowDefinitions>
+
+                        <StackLayout Grid.Row="0"  Padding="5" HorizontalOptions="Start">
+                            <Label  TextColor="Black" FontSize="14"  Text="Applying Hourly Rate: "  />
+                        </StackLayout>
+                        <StackLayout   Orientation="Horizontal" HorizontalOptions="FillAndExpand" Grid.Row="1"   >
+                            <Slider  HorizontalOptions="FillAndExpand" ValueChanged="Slder_ValueChanged" x:Name="Slder" >
+                                <Slider.Effects>
+                                    <effects:SliderEffect/>
+                                </Slider.Effects>
+                            </Slider>
+                        <StackLayout HorizontalOptions="End">
+                            <Label TextColor="#1d1d26" x:Name="sldrtxt" Text="{Binding _jobModel.maxHrRate}" />
+                        </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                   
+                </StackLayout>
+                <!--Applying Hourly Rate-->
+
+
+                <!--Here is why-->
+                <StackLayout Orientation="Vertical" Grid.Row="8"  >
+                    <Label Text="You can accept above rate OR change it!!" HorizontalOptions="Center" VerticalOptions="Center"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  FontSize="14" TextColor="#f79651" />
+                    <StackLayout >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Tapped="Handle_Tapped">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0"  Grid.Column="1" Text="Here is why" TextColor="#60afdf" HorizontalOptions="Center" VerticalOptions="Center"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="14" />
+                            <BoxView Grid.Row="1" TranslationY="-15" Grid.Column="1" Color="Silver" HeightRequest="2"   VerticalOptions="End"/>
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+                <!--Here is why-->
+
+                <!--Notes-->
+                <Grid  HorizontalOptions="FillAndExpand" Grid.Row="9">
+                    <Grid.RowDefinitions>
+                        <RowDefinition  Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="8*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Padding="5" HorizontalOptions="StartAndExpand">
+                        <Label TextColor="Black" FontSize="16"   Text="Notes: " />
+                    </StackLayout>
+                    <StackLayout Margin="0,3,0,0" Grid.Row="0" Grid.Column="1" HorizontalOptions="StartAndExpand">
+                        <Label  FontSize="16" TextColor="#1d1d26" Text="{Binding _jobModel.note}" />
+                    </StackLayout>
+                </Grid>
+                <!--Notes-->
+
+
+
+                <!--Actions Buttons-->
+                <Grid Grid.Row="10" HorizontalOptions="FillAndExpand" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="B1"  IsVisible="False" Text="Apply" Grid.Row="0" Clicked="Button_Clicked_3" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                    <Button x:Name="B5" IsVisible="False" Text="Cancel Job"  Grid.Row="1"  Clicked="B5_Clicked" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                    <Button x:Name="B6" IsVisible="False" Text="Confirm" Grid.Row="0"  Clicked="B6_Clicked" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                </Grid>
+                <!--Actions Buttons-->
+            </Grid>
+            </ScrollView>
+        </Grid>
+
+    </Grid>
+
+    <Grid HeightRequest="450" x:Name="secondGrid" Grid.Row="2" IsVisible="False" HorizontalOptions="Fill" VerticalOptions="Fill" >
+        <ScrollView>
+            <Grid  Padding="15" HorizontalOptions="Fill" VerticalOptions="Fill" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout VerticalOptions="CenterAndExpand" Grid.Row="0">
+                    <StackLayout  HorizontalOptions="CenterAndExpand">
+                        <Label TextColor="#f79651" Text="Apply to Job" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout  Grid.Row="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout  HorizontalOptions="CenterAndExpand">
+                        <Label IsVisible="False" x:Name="ratetext" TextColor="#60afdf" />
+                        <Label Text="{Binding _jobModel.jobTypeTitle}" TextColor="#f79651" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout  Grid.Row="2"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout Spacing="10"  HorizontalOptions="Center" VerticalOptions="Center">
+                        <!--TODO : What to type Here :-->
+                        <Label  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" x:Name="ApplyTexthelperone"  />
+                        <BoxView IsVisible="False" Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  />
+                        <Label  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Center" x:Name="ApplyTexthelpertwo" />
+                        <BoxView  IsVisible="False" Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  />
+                        <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  HorizontalOptions="Center" x:Name="ApplyTexthelperthree"   />
+                        <BoxView  IsVisible="False" Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  />
+                        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Schedule" TextColor="#f79651" />
+                        <BoxView  Opacity="0.7" HeightRequest="2"  Color="#F2F2F2"  />
+                    </StackLayout>
+                </StackLayout>
+                
+                    <ListView Grid.Row="3" BackgroundColor="Transparent" x:Name="dateselecedlistview"  HasUnevenRows="True"    SeparatorColor="Transparent" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <!--VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand"--> 
+                                        <Grid >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0"> 
+                                                <Label TextColor="#60afdf" FontSize="Small" Text="{Binding DayNumber, Mode=TwoWay}" />
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" >
+                                                <Label TextColor="#60afdf" FontSize="Small" Text="{Binding Datefromto , Mode=TwoWay}" /> 
+                                            </StackLayout>
+                                        </Grid>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                 
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" Text="Apply" Command="{Binding GetData,Mode=TwoWay}" x:Name="ApplyButton" Clicked="Button_Clicked_4" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                    <Button Grid.Column="0" Text="Cancel" x:Name="CancelButtonn" Clicked="CancelButtonn_Clicked" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                </Grid>
+            </Grid>
+        </ScrollView>
+
+    </Grid>
+    <Grid Padding="30" HeightRequest="450" x:Name="ThirdGrid" Grid.Row="2" IsVisible="False" HorizontalOptions="Fill" VerticalOptions="Fill"  >
+        <ScrollView>
+            <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout VerticalOptions="CenterAndExpand" Grid.Row="0">
+                    <StackLayout  HorizontalOptions="CenterAndExpand">
+                        <Label TextColor="#f79651 " Text="Congratulation" />
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout  Grid.Row="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout  HorizontalOptions="CenterAndExpand">
+                        <Label  Text="You Have been just hired to" TextColor="Black" />
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout  Grid.Row="2"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout  HorizontalOptions="CenterAndExpand">
+                        <Label  x:Name="confirmjobname" FontSize="Large" HorizontalOptions="CenterAndExpand"  TextColor="#60afdf " />
+                        <Label x:Name="postedby" Text="" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout  HorizontalOptions="FillAndExpand" Orientation="Horizontal"  Grid.Row="3">
+                    <StackLayout  HorizontalOptions="StartAndExpand">
+                        <Label TextColor="DimGray" Text="Hired on date" />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="EndAndExpand">
+                        <Label TextColor="#1d1d26 "  x:Name="HiringDate" Text="" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Grid.Row="4">
+                    <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2 " VerticalOptions="End"/>
+                </StackLayout>
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" Text="Confirm"  x:Name="confirmhiring"  Clicked="Button_Clicked_5" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651 "  />
+                    <Button  Grid.Column="0" Text="Cancel"  x:Name="cancelConfirmHiring"  Clicked="cancelConfirmHiring_Clicked" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651 "  />
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </Grid>
+    </Grid>
+
+
+
+</ContentPage>

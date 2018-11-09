@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+             xmlns:lvm="clr-namespace:Pt_Hippo_Mobile.ViewModel.ReportsViewModel"
+             BackgroundImage="bg_trans"
+             x:Class="Pt_Hippo_Mobile.Views.BackgroundCheckFolder.MedicalCheck">
+    <ContentPage.BindingContext>
+        <lvm:DocumentsReports/>
+    </ContentPage.BindingContext>
+
+     <Grid RowSpacing="0" >
+         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+       
+        <customcontrols:CustomNavigationBar NavigationBarType="MasterDetail" Title="Medical Report"/>
+
+        <Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1"/>
+
+           <ListView x:Name="mydata" CachingStrategy="RecycleElement"  ItemsSource="{Binding Path=FileName}" BackgroundColor="Transparent" SeparatorVisibility="None" RowHeight="100" Grid.Row="1">
+                <ListView.ItemTemplate>
+                <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                <MenuItem Clicked="btn_edit" Icon="edit.png" CommandParameter="{Binding id}"
+               Text="Edit" />
+                <MenuItem Clicked="btn_delet" Icon="trash.png"  CommandParameter="{Binding id}"
+               Text="Delete" IsDestructive="True" />
+               </ViewCell.ContextActions>
+                           <Grid Padding="3" Margin="0,15,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="7.8*"/>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="6*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <BoxView WidthRequest="3" Color="#f5a623" HorizontalOptions="Center" Grid.RowSpan="3"/>
+
+                            <Label Text="{Binding title}"  TextColor="#60afdf" FontSize="22" Grid.Row="0" Grid.Column="1"/>
+                            <Label Text="{Binding originalFileName}" Opacity="0.5" TranslationY="4" TextColor="#1d1d26" FontSize="13" Grid.Row="1" Grid.Column="1"/>
+                            <Label Text="{Binding Dateformated}" 
+                                   TextColor="#1d1d26" FontSize="17" Opacity="0.5" TranslationY="3" Grid.Row="2" Grid.Column="1"/>
+                        </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        <Button Image="addbtn" x:Name="addded"  Clicked="Handle_Clicked"  BackgroundColor="Transparent" WidthRequest="70" HeightRequest="70"  HorizontalOptions="End" VerticalOptions="End" Margin="20" Grid.Row="1"/>
+        </Grid>
+      
+</ContentPage>

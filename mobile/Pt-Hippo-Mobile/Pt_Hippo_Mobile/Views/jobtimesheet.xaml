@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Pt_Hippo_Mobile.Views.jobtimesheet" 
+   xmlns:vm="clr-namespace:Pt_Hippo_Mobile.ViewModel;assembly=Pt_Hippo_Mobile"
+    xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls" >
+    <ContentPage.BindingContext>
+        <vm:jobtimeesheetviewmodel/>
+    </ContentPage.BindingContext>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <customcontrols:CustomNavigationBar NavigationBarType="MasterDetail" Title=" My Time Sheet" />
+        <!--<ActivityIndicator Color="Orange" BackgroundColor="Black" IsRunning="{Binding Isbusy}" TranslationY="40"   HorizontalOptions="Center" VerticalOptions="Center" />-->
+        <Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1" Grid.RowSpan="3"/>
+        <Grid x:Name="nogrid"  Padding="5" Grid.Row="3"   IsVisible="true">
+            <Label Text="No Time Sheet" HorizontalOptions="Center" FontSize="18"  VerticalOptions="Center"/>
+        </Grid>
+        <Grid x:Name="timeview"  Padding="5" Grid.Row="2" IsVisible="false" >
+            <ListView x:Name="timelist" ItemsSource="{Binding Getsheet}" ItemSelected="Handle_ItemSelected" BackgroundColor="Transparent" SeparatorVisibility="None" RowHeight="130">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="2, 0">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="0.75*"/>
+                                    <RowDefinition Height="0.75*"/>
+                                    <RowDefinition Height="0.75*"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Text="{Binding Title}" TextColor="#f79651" Grid.Row="0" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                                <Label Text="{Binding stateText}" TextColor="#1d1d26" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Center"/>
+
+
+
+                                <StackLayout Orientation="Horizontal" Grid.Row="1" HorizontalOptions="Start">
+                                    <Image Source="group_4" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+
+                                    <Label Text="{Binding dateText}" TextColor="#1d1d26" Opacity="0.5"  FontSize="15" VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Grid.Row="1" TranslationX="-30" HorizontalOptions="End">
+                                    <Image Source="money" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding RateText}" TextColor="#1d1d26" Opacity="0.5" FontSize="15" VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" Grid.Row="2"  TranslationY="-5" HorizontalOptions="Start">
+                                    <Image Source="time" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding Acutal}" TextColor="#1d1d26" Opacity="0.5"  FontSize="15" VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" TranslationY="-5" Grid.Row="2" TranslationX="-30" HorizontalOptions="End">
+                                    <Image Source="time" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding TotalHoursText}" TextColor="#1d1d26" Opacity="0.5"  FontSize="15" VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" TranslationY="-10" Grid.Row="3" >
+
+                                    <Label Text="{Binding PaymentStatusText}" TextColor="#1d1d26" Opacity="0.5"  FontSize="15" VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                                <BoxView HeightRequest="1" Color="Silver"  VerticalOptions="End"   Grid.Row="3"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <Grid HeightRequest="60" Grid.Row="3" x:Name="gridselect" ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout x:Name="searchtap"  BackgroundColor="White" Grid.Column="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"  />
+                </StackLayout.GestureRecognizers>
+                <Image x:Name="isearchtap" Margin="0,10,0,0" HeightRequest="25" WidthRequest="25" Source="Magnifier" VerticalOptions="Center"  HorizontalOptions="Center" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"  />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label x:Name="searchtapLabel"  FontSize="13" Text="Search"  TextColor="DimGray"  HorizontalTextAlignment="Center" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"  />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout  BackgroundColor="White" x:Name="MyJobstap" Grid.Column="1">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"  />
+                </StackLayout.GestureRecognizers>
+                <Image x:Name="iMyJobstap" Margin="0,10,0,0" HeightRequest="25" WidthRequest="25" Source="MyJobs"    HorizontalOptions="Center" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"  />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label x:Name="MyJobstapLabel"  FontSize="13" Text="My Jobs"  TextColor="DimGray"  HorizontalTextAlignment="Center"  >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"  />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout x:Name="timesheettext" BackgroundColor="White" Grid.Column="2">
+
+                <Image x:Name="itimesheettext" Margin="0,10,0,0" HeightRequest="25" WidthRequest="25" Source="Timesheet"    HorizontalOptions="Center" />
+
+
+                <Label x:Name="timesheettextLabel" Text="Time Sheet" FontSize="13"  TextColor="DimGray" HorizontalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout BackgroundColor="White" x:Name="Availabilitytext" Grid.Column="3">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4" />
+                </StackLayout.GestureRecognizers>
+                <Image x:Name="iAvailabilitytext" Margin="0,10,0,0" HeightRequest="25" WidthRequest="25" Source="Availability" HorizontalOptions="Center" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label x:Name="AvailabilitytextLabel" FontSize="13" Text="Availability"  TextColor="DimGray"  HorizontalTextAlignment="Center" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+
+        </Grid>
+    </Grid>
+</ContentPage>

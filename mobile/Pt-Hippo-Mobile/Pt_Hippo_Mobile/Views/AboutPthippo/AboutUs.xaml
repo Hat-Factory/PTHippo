@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+             x:Class="Pt_Hippo_Mobile.Views.AboutPthippo.AboutUs"  BackgroundImage="background_2">
+    <Grid RowSpacing="0" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <customcontrols:CustomNavigationBar NavigationBarType="MasterDetail" Title="About PT Hippo" />
+        <!--<Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1" Grid.RowSpan="3" />-->
+        <Grid HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="1">
+            <StackLayout>
+               
+                <Frame  HasShadow="false"  TranslationY="6" Opacity="0.7" OutlineColor="#60afd"  BackgroundColor="#e5ffffff" HorizontalOptions="FillAndExpand" HeightRequest="900" CornerRadius="2" >
+
+                    <ScrollView  >
+                        <StackLayout Orientation="Vertical"  TranslationY="-20" >
+                            <StackLayout>
+
+
+                                <Label IsEnabled="False" Opacity="0.0" Text="About PT Hippo" TextColor="#f5a623" HorizontalOptions="Center" Margin="0,20,0,4" FontSize="21" />
+                                <Label x:Name="terms" FontSize="20"  Opacity="0.6" TextColor="#1d1d26" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+
+
+                        </StackLayout>
+                    </ScrollView>
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

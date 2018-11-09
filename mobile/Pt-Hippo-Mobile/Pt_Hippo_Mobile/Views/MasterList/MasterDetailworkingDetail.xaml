@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pt_Hippo_Mobile.Views.MasterList.MasterDetailworkingDetail"
+             xmlns:vm="clr-namespace:Pt_Hippo_Mobile.ViewModel"
+             xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+             xmlns:custom="clr-namespace:Xamarin.RangeSlider.Forms;assembly=Xamarin.RangeSlider.Forms"
+             BackgroundImage="bg_trans" 
+              
+             xmlns:local="clr-namespace:Pt_Hippo_Mobile.Controls" >
+    
+            <ActivityIndicator Color="DarkGray" IsRunning="True" HorizontalOptions="Center" VerticalOptions="Center" />
+    
+    
+</ContentPage>

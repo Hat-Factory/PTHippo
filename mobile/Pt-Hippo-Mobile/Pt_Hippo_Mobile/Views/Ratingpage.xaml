@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Pt_Hippo_Mobile.Views.Ratingpage"
+     xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+     xmlns:vm="clr-namespace:Pt_Hippo_Mobile.ViewModel" BackgroundImage="background_2">
+    <ContentPage.BindingContext>
+        <vm:RatingViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <customcontrols:CustomNavigationBar  NavigationBarType="MasterDetail" Title="Rating"/>
+
+        <Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1" Grid.RowSpan="3"/>
+
+      
+
+        <Grid   Margin="10,0,25,0"  BackgroundColor="Blue"  Grid.Row="2" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="6*"/>
+
+                </Grid.RowDefinitions>
+                <Grid  Padding="5, 0" Grid.Row="0" >
+                    <Grid.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="gr" CommandParameter="{Binding Id}" Tapped="TapGestureRecognizer_Tapped">
+                            </TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.75*"/>
+                        <RowDefinition Height="0.75*"/>
+                        <RowDefinition Height="0.75*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="{Binding Jobtitle}" TextColor="#f79651" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Label Text="{Binding Jobtype}" TextColor="DimGray" FontSize="Micro" VerticalOptions="Start" Grid.Row="1"/>
+
+                    <StackLayout Orientation="Horizontal" Grid.Row="2" HorizontalOptions="Start">
+
+                        <Image Source="time" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+
+                        <Label Text="{Binding Date}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Grid.Row="2" HorizontalOptions="End">
+                        <Image Source="money" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+                        <Label Text="{Binding MinRate}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                
+                            <!--</Grid>
+                        </ListView>-->
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Grid.Row="3" >
+                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                            <Image Source="location" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" />
+                            <Label Text="{Binding Location}" TextColor="DimGray" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                            <Image Source="parking" HeightRequest="20" WidthRequest="20"   />
+                            <Label Text="{Binding Hasparking}" TextColor="#f79651" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal"  HorizontalOptions="End">
+                            <Image Source="bus" HeightRequest="20" WidthRequest="20"   />
+                            <Label Text="{Binding Haspublictrasnportion}" TextColor="DimGray" FontSize="Small"/>
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <BoxView Opacity="0.7" HeightRequest="2"  Color="#F2F2F2" VerticalOptions="End" Grid.Row="4"/>
+                </Grid>
+
+                 
+            </Grid>
+
+
+      
+     
+    </Grid>
+
+
+</ContentPage>

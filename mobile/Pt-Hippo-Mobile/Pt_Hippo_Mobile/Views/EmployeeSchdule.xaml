@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pt_Hippo_Mobile.Views.EmployeeSchdule" xmlns:ios="clr-namespace:UIKit;assembly=Xamarin.iOS;targetPlatform=iOS"
+		xmlns:androidWidget="clr-namespace:Android.Widget;assembly=Mono.Android;targetPlatform=Android"
+		xmlns:formsAndroid="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.Platform.Android;targetPlatform=Android"
+            xmlns:ii="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+            xmlns:o="clr-namespace:Behaviors;assembly=Behaviors"
+            xmlns:viewmodel="clr-namespace:Pt_Hippo_Mobile.ViewModel;assembly=Pt_Hippo_Mobile" >
+    <!--Pages can be added as references or inline-->
+
+    <TabbedPage.BindingContext>
+        <viewmodel:EmployeeScheduleViewmodel/>
+    </TabbedPage.BindingContext>
+    <ContentPage Title="Sun"  >
+
+        <StackLayout Orientation="Vertical" Padding="10"   Spacing="2">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Are you Free on sunday"/>
+
+                <!--<Switch  IsToggled="{Binding IsSwitchOn, Mode=TwoWay}" VerticalOptions="Center" />-->
+                <Switch IsToggled="{Binding isAvailableFullDay}" />
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+
+                <Label Text="From:" VerticalOptions="Center" />
+                <TimePicker          Format="hh:mm tt"    WidthRequest="150"  Time="{Binding Timefrom, Mode=TwoWay}"/>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <Label Text=" To:"  VerticalOptions="Center" />
+                <TimePicker x:Name="toDatePicker1" Format="hh:mm tt"  Time="{Binding Timeto,Mode=TwoWay}"  />
+                <Button Command="{Binding putdata}" Text="save"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Mon" >
+
+        <StackLayout Orientation="Vertical" Padding="10"   Spacing="2">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Are you Free on Saterday"/>
+
+                <!--<Switch  IsToggled="{Binding IsSwitchOn, Mode=TwoWay}" VerticalOptions="Center" />-->
+                <Switch IsToggled="{Binding isAvailableFullDay}" />
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+
+                <Label Text="From:" VerticalOptions="Center" />
+                <TimePicker Format="hh:mm tt"    WidthRequest="150"  Time="{Binding Timefrom, Mode=TwoWay}"/>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <Label Text=" To:"  VerticalOptions="Center" />
+                <TimePicker  Format="hh:mm tt"  Time="{Binding Timeto,Mode=TwoWay}"  />
+                <Button Command="{Binding putdata}" />
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Tues" >
+
+        <StackLayout Orientation="Vertical" Padding="10"   Spacing="2">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Are you Free on Saterday"/>
+
+                <!--<Switch  IsToggled="{Binding IsSwitchOn, Mode=TwoWay}" VerticalOptions="Center" />-->
+                <Switch IsToggled="{Binding isAvailableFullDay}"  />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+
+                <Label Text="From:" VerticalOptions="Center" />
+                <TimePicker Format="hh:mm tt"    WidthRequest="150"  Time="{Binding Timefrom, Mode=TwoWay}"/>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <Label Text=" To:"  VerticalOptions="Center" />
+                <TimePicker  Format="hh:mm tt"  Time="{Binding Timeto,Mode=TwoWay}"  />
+            </StackLayout>
+            <Button Command="{Binding putdata}" Text="save"/>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Wednes" >
+
+        <StackLayout Orientation="Vertical" Padding="10"   Spacing="2">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Are you Free on Saterday"/>
+
+                <!--<Switch  IsToggled="{Binding IsSwitchOn, Mode=TwoWay}" VerticalOptions="Center" />-->
+                <Switch IsToggled="{Binding isAvailableFullDay}" />
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+
+                <Label Text="From:" VerticalOptions="Center" />
+                <TimePicker Format="hh:mm tt"    WidthRequest="150"  Time="{Binding Timefrom, Mode=TwoWay}"/>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <Label Text=" To:"  VerticalOptions="Center" />
+                <TimePicker  Format="hh:mm tt"  Time="{Binding Timeto,Mode=TwoWay}"  />
+            </StackLayout>
+            <Button Command="{Binding putdata}" Text="save"/>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Thrus" >
+
+        <StackLayout Orientation="Vertical" Padding="10"   Spacing="2">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Are you Free on Saterday"/>
+
+                <!--<Switch  IsToggled="{Binding IsSwitchOn, Mode=TwoWay}" VerticalOptions="Center" />-->
+                <Switch IsToggled="{Binding isAvailableFullDay}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+
+                <Label Text="From:" VerticalOptions="Center" />
+                <TimePicker Format="hh:mm tt"    WidthRequest="150"  Time="{Binding Timefrom, Mode=TwoWay}"/>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <Label Text=" To:"  VerticalOptions="Center" />
+                <TimePicker  Format="hh:mm tt"  Time="{Binding Timeto,Mode=TwoWay}"  />
+            </StackLayout>
+            <Button Command="{Binding putdata}" Text="save"/>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Fri" >
+
+        <StackLayout Orientation="Vertical" Padding="10"   Spacing="2">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Are you Free on Saterday"/>
+
+                <!--<Switch  IsToggled="{Binding IsSwitchOn, Mode=TwoWay}" VerticalOptions="Center" />-->
+                <Switch IsToggled="{Binding isAvailableFullDay}"  />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+
+                <Label Text="From:" VerticalOptions="Center" />
+                <TimePicker Format="hh:mm tt"    WidthRequest="150"  Time="{Binding Timefrom, Mode=TwoWay}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <Label Text=" To:"  VerticalOptions="Center" />
+                <TimePicker  Format="hh:mm tt"  Time="{Binding Timeto,Mode=TwoWay}"  />
+            </StackLayout>
+            <Button Command="{Binding putdata}" Text="save"/>
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage Title=" Sat" >
+
+        <StackLayout Orientation="Vertical" Padding="10"   Spacing="2">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Are you Free on Saterday"/>
+
+                <!--<Switch  IsToggled="{Binding IsSwitchOn, Mode=TwoWay}" VerticalOptions="Center" />-->
+                <Switch IsToggled="{Binding isAvailableFullDay}"  >
+
+                </Switch>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+
+                <Label Text="From:" VerticalOptions="Center" />
+                <TimePicker x:Name="fromDatePicker" Format="hh:mm tt"    WidthRequest="150"  Time="{Binding Timefrom, Mode=TwoWay}"/>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="2">
+                <Label Text=" To:"  VerticalOptions="Center" />
+                <TimePicker  Format="hh:mm tt"  Time="{Binding Timeto,Mode=TwoWay}"  />
+            </StackLayout>
+            <Button Command="{Binding putdata}" Text="save"/>
+
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="SpecificDay" >
+        <ListView  x:Name="myss"   SeparatorVisibility="Default" HasUnevenRows="True"  IsPullToRefreshEnabled="True"   SeparatorColor="Black" BackgroundColor="Beige">
+            <ListView.Header>
+                <Grid BackgroundColor="#03A9F4">
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="*" />
+
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition Height="*" />
+
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="0" HorizontalOptions="FillAndExpand">
+                        <Label Text="Choose which day you are free ?"  HorizontalOptions="FillAndExpand" />
+                        <!--<Switch  IsToggled="{Binding IsSwitchOn, Mode=TwoWay}" VerticalOptions="Center" />-->
+                        <Switch IsToggled="{Binding isAvailableFullDay}" />
+                    </StackLayout>
+                    <Label Text="specific date:" VerticalOptions="Center"  Grid.Column="0" Grid.Row="1" />
+                    <DatePicker x:Name="dp"   Date="{Binding specific,Mode=TwoWay}"  Grid.Column="0" Grid.Row="2" />
+
+                    <Label Text="From:" VerticalOptions="Center"  Grid.Column="0" Grid.Row="3" />
+                    <TimePicker  Format="hh:mm tt"    WidthRequest="150"  Time="{Binding Timefrom, Mode=TwoWay}" Grid.Column="0" Grid.Row="4" />
+
+                    <Label Text=" To:"  VerticalOptions="Center"  Grid.Column="0" Grid.Row="5" />
+                    <TimePicker  Format="hh:mm tt"  Time="{Binding Timeto,Mode=TwoWay}"  Grid.Column="0" Grid.Row="6" />
+
+                    <Button Command="{Binding putdata}" Text="save"  Grid.Column="0" Grid.Row="7" WidthRequest="200" />
+                    <Button Text="show"  Command="{Binding ShowMyschdule}"  Grid.Column="1" Grid.Row="7" WidthRequest="200" />
+                </Grid>
+            </ListView.Header>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                        <ViewCell.View>
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Label Text="Date: " Grid.Column="0" Grid.Row="0" />
+                                    <Label Text="{Binding SpecificDate ,Mode=TwoWay}" Grid.Column="1"  Grid.Row="0" />
+                                    <Label Text="From : " Grid.Column="0" Grid.Row="1" />
+                                    <Label Text="{Binding From ,Mode=TwoWay}"  Grid.Column="1" Grid.Row="1" />
+                                    <Label Text="To :" Grid.Column="0" Grid.Row="2" />
+                                    <Label Text="{Binding To ,Mode=TwoWay}" Grid.Column="1" Grid.Row="2" />
+                                    <Button Clicked="Button_Clicked" Text="Delete" CommandParameter="{Binding Id,Mode=TwoWay}" Grid.Column="3" Grid.Row="3" />
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage>
+
+</TabbedPage>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+             xmlns:custom="clr-namespace:Xamarin.RangeSlider.Forms;assembly=Xamarin.RangeSlider.Forms"
+             xmlns:local="clr-namespace:Pt_Hippo_Mobile.Controls"
+             xmlns:lvm="clr-namespace:Pt_Hippo_Mobile.ViewModel.ReportsViewModel"
+             x:Class="Pt_Hippo_Mobile.Views.BackgroundCheckFolder.TappedWantedDocuments">
+    <ContentPage.BindingContext>
+        <lvm:DocumentsReports/>
+    </ContentPage.BindingContext>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <customcontrols:CustomNavigationBar   NavigationBarType="MasterDetail" Title="Credentials" />
+
+        <Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1" Grid.RowSpan="3"/>
+
+        <Grid x:Name="namegrid" HeightRequest="45" Grid.Row="1" ColumnSpacing="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="NoOfCurrentJobs" Text="Medical Check"  FontSize="12.5" Grid.Column="0"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeToCurrent"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+
+            <Label x:Name="NoOfsavedJobs" Text="Liability Insurance"   FontSize="12.5" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeToSaved"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+
+            <Label x:Name="NoOfAppliedJobs" Text="Background Check"  FontSize="12.5" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeToApplied"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <BoxView x:Name="UnderlineBoxView"   HeightRequest="3" Color="#f79651 " VerticalOptions="End"/>
+        </Grid>
+
+        <Grid x:Name="CurrentJobsLayout" Grid.Row="2"   Padding="5" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ListView Grid.Row="1" HeightRequest="2000" x:Name="mydata" CachingStrategy="RecycleElement"  ItemsSource="{Binding Path=FileName}" BackgroundColor="Transparent" SeparatorVisibility="None" RowHeight="109"  >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="btn_edit" Icon="edit.png" CommandParameter="{Binding id}" Text="Edit" />
+                                <MenuItem Clicked="btn_delet" Icon="trash.png"  CommandParameter="{Binding id}" Text="Delete" IsDestructive="True" />
+                            </ViewCell.ContextActions>
+                            <Grid Padding="3" Margin="0,15,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="9*"/>
+                                    <RowDefinition Height="5.5*"/>
+                                    <RowDefinition Height="7.5*"/>
+                            
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
+                                <BoxView WidthRequest="3" Color="#f5a623" HorizontalOptions="Center" Grid.RowSpan="3"/>
+
+                                <Label Text="{Binding title}"  TextColor="#60afdf" HeightRequest="100" FontSize="22" Grid.Row="0" Grid.Column="1"/>
+                                <Label Text="{Binding originalFileName}" Opacity="0.5" TranslationY="-6" TextColor="#1d1d26" FontSize="13" Grid.Row="1" Grid.Column="1"/>
+                                <Label Text="{Binding Dateformated}" TextColor="#1d1d26" FontSize="17" Opacity="0.5" TranslationY="-9" Grid.Row="2" Grid.Column="1"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Image="add_copy.png"   x:Name="addded"  Clicked="Handle_Clicked"  BackgroundColor="Transparent" WidthRequest="60" HeightRequest="60"  HorizontalOptions="End" VerticalOptions="End" Margin="20" Grid.Row="1"/>
+        </Grid>
+
+        <Grid x:Name="SavedJobsLayout" Padding="5" Grid.Row="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <ListView  CachingStrategy="RecycleElement"  ItemsSource="{Binding Path=FileName}" BackgroundColor="Transparent" SeparatorVisibility="None" RowHeight="110" Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="btnli_edit" Icon="edit.png" CommandParameter="{Binding id}"
+               Text="Edit" />
+                                <MenuItem Clicked="btnli_delet" Icon="trash.png"  CommandParameter="{Binding id}"
+               Text="Delete" IsDestructive="True" />
+                            </ViewCell.ContextActions>
+                            <Grid Padding="3" Margin="0,15,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="9*"/>
+                                    <RowDefinition Height="5.5*"/>
+                                    <RowDefinition Height="7.5*"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
+                                <BoxView WidthRequest="3" Color="#f5a623" HorizontalOptions="Center" Grid.RowSpan="3"/>
+
+                                <Label Text="{Binding title}"  HeightRequest="100" TextColor="#60afdf" FontSize="22" Grid.Row="0" Grid.Column="1"/>
+                                <Label Text="{Binding originalFileName}" Opacity="0.5" TextColor="#1d1d26"  TranslationY="-6" FontSize="13" Grid.Row="1" Grid.Column="1"/>
+                                <Label Text="{Binding Dateformated}" 
+                                   TextColor="#1d1d26" FontSize="17" Opacity="0.5" Grid.Row="2"  TranslationY="-12" Grid.Column="1"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Image="add_copy.png"  x:Name="button1a" BackgroundColor="Transparent" WidthRequest="60" HeightRequest="60"  Clicked="Handleli_Clicked" HorizontalOptions="End" VerticalOptions="End" Margin="20" Grid.Row="1"/>
+        </Grid>
+
+        <Grid x:Name="AppliedJobsLayout" Padding="5" Grid.Row="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <ListView  CachingStrategy="RecycleElement"  ItemsSource="{Binding Path=FileName}" BackgroundColor="Transparent" SeparatorVisibility="None" RowHeight="109" Grid.Row="1">
+                <ListView.Header>
+                    <Grid x:Name="Gridhead">
+                      
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"  >
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label  TextColor="DimGray" FontAttributes="Bold" Text="Background Check request" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="EndAndExpand">
+                                <Label x:Name="ListHeadearLabelName"  TextColor="#f5a623" Text="Hello"/> 
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                   
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="btnbc_edit" Icon="edit.png" CommandParameter="{Binding id}"
+               Text="Edit" />
+                                <MenuItem Clicked="btnbc_delet" Icon="trash.png"  CommandParameter="{Binding id}"
+               Text="Delete" IsDestructive="True" />
+                            </ViewCell.ContextActions>
+                            <Grid Padding="3" Margin="0,15,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="9*"/>
+                                    <RowDefinition Height="5.5*"/>
+                                    <RowDefinition Height="7.5*"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
+                                <BoxView WidthRequest="3" Color="#f5a623" HorizontalOptions="Center" Grid.RowSpan="3"/>
+
+                                <Label Text="{Binding title}" HeightRequest="100"  TextColor="#60afdf" FontSize="22" Grid.Row="0" Grid.Column="1"/>
+                                <Label Text="{Binding originalFileName}" Opacity="0.5" TextColor="#1d1d26" TranslationY="-5" FontSize="13" Grid.Row="1" Grid.Column="1"/>
+                                <Label Text="{Binding Dateformated}" TranslationY="-10"
+                                   TextColor="#1d1d26" FontSize="17" Opacity="0.5" Grid.Row="2" Grid.Column="1"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--TranslationY="-80"-->
+            <!--TranslationY=""-->
+            <Button Image="add_copy.png" x:Name="buttona"  Clicked="Handlebc_Clicked"  BackgroundColor="Transparent" WidthRequest="60" HeightRequest="60" HorizontalOptions="End" VerticalOptions="End" Margin="20" Grid.Row="1"/>
+            <Grid Padding="10,10,10,10"  IsVisible="False" x:Name="flyinglayout"     WidthRequest="180"  HorizontalOptions="End" VerticalOptions="End"  TranslationY="-80" Margin="20" Grid.Row="1">
+                <StackLayout Orientation="Vertical">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center"  >
+                        <Button x:Name="AddnewDocButton" Clicked="AddnewDoc" BackgroundColor="Transparent" TextColor="White" Text="Add new "/>
+                    </StackLayout>
+                    <StackLayout>
+                        <BoxView Opacity="0.7"   HeightRequest="2"  Color="White" VerticalOptions="End"/>
+                    </StackLayout>
+                    <StackLayout  HorizontalOptions="Center" VerticalOptions="Center">
+                        <Button x:Name="RequestFromAdminButton" BackgroundColor="Transparent" Clicked="RequestFromAdmin" TextColor="White" Text="Request from Admin"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

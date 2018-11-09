@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:uvm="clr-namespace:Pt_Hippo_Mobile.ViewModel"
+             BackgroundImage="bg_trans"
+             xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+             x:Class="Pt_Hippo_Mobile.Views.Signup.SkillsSignUp">
+    <ContentPage.BindingContext>
+        <uvm:RegisterViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <customcontrols:CustomNavigationBar  x:Name="navbartitle" NavigationBarType="Modal" />
+            <Grid Grid.Row="1" >
+                <ListView BackgroundColor="Transparent" HeightRequest="2000" TranslationY="10" SeparatorColor="Transparent"  x:Name="listView1" HasUnevenRows="True" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout HorizontalOptions="Center" Margin="5,0,0,0" Grid.Row="0" Grid.Column="0" >
+                                            <Image HeightRequest="30" WidthRequest="30" Source="{Binding Imaage}" >
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding skillTitle}">
+                                                    </TapGestureRecognizer>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </StackLayout>
+                                        <StackLayout TranslationY="6" HorizontalOptions="Center"  Grid.Row="0" Grid.Column="1" >
+                                            <Label Text="{Binding skillTitle}" />
+                                        </StackLayout>
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

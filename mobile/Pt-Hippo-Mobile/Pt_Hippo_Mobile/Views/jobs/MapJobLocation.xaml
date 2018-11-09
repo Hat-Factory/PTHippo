@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pt_Hippo_Mobile.Views.jobs.MapJobLocation"
+             xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             Title="BasicMap">
+    <Grid RowSpacing="0" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <customcontrols:CustomNavigationBar  NavigationBarType="Modal" Title="Job Location" />
+        <Grid Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill">
+            <maps:Map HorizontalOptions="Fill" VerticalOptions="Fill" x:Name="map" />
+        </Grid>
+    </Grid>
+</ContentPage>

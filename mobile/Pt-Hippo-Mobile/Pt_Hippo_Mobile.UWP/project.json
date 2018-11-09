@@ -1,0 +1,26 @@
+﻿{
+  "dependencies": {
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+    "Xam.Plugin.Connectivity": "3.0.3",
+    "Xam.Plugin.ExternalMaps": "4.0.1",
+    "Xam.Plugin.FilePicker": "1.1.0",
+    "Xam.Plugin.Media": "3.0.1",
+    "Xam.Plugins.Settings": "3.0.1",
+    "Xamarin.Forms": "2.3.4.224",
+    "Xamarin.Forms.GoogleMaps": "2.1.0",
+    "Xamarin.Forms.Maps": "2.3.4.270",
+    "Xamarin.Forms.RangeSlider": "0.7.4",
+    "XLabs.Core": "2.0.5782"
+  },
+  "frameworks": {
+    "uap10.0": {}
+  },
+  "runtimes": {
+    "win10-arm": {},
+    "win10-arm-aot": {},
+    "win10-x86": {},
+    "win10-x86-aot": {},
+    "win10-x64": {},
+    "win10-x64-aot": {}
+  }
+}

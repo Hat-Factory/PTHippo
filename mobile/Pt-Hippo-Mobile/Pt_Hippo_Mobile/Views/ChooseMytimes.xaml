@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Pt_Hippo_Mobile.Views.ChooseMytimes"
+     xmlns:vm="clr-namespace:Pt_Hippo_Mobile.ViewModel"
+     xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls">
+    <ContentPage.BindingContext>
+        <vm:EmployeeScheduleViewmodel/>
+    </ContentPage.BindingContext>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <customcontrols:CustomNavigationBar NavigationBarType="MasterDetail" Title="Availability" />
+
+        <Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1" Grid.RowSpan="3"/>
+
+        <Grid Grid.Row="1" ColumnSpacing="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Weekly" TextColor="White" BackgroundColor="#87c8ee" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="avaialble" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label BackgroundColor="#87c8ee" TextColor="White" Text="Monthly" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer  Tapped="freedate"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <BoxView x:Name="UnderlineBoxView" HeightRequest="3" Color="#f79651" VerticalOptions="End"/>
+        </Grid>
+        <Grid Grid.Row="2" x:Name="dayofweek"  ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid HeightRequest="90" WidthRequest="60" Grid.Row="0" BackgroundColor="#ecf0f1"  VerticalOptions="Start" ColumnSpacing="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Label x:Name="monlabel" Text="Mon" Grid.Column="0" Grid.Row="0"   TextColor="DimGray"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="monday"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="tueslabel" Text="TUE" Grid.Column="1" Grid.Row="0"  TextColor="DimGray" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="tuesday" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="wedslabel" Text="WED" Grid.Column="2" Grid.Row="0"  TextColor="DimGray"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="wedesday" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="thurslabel" Text="THUR" Grid.Column="3" Grid.Row="0"  TextColor="DimGray" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="thrusday" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="frilabel" Text="FRI" Grid.Column="4" Grid.Row="0"    TextColor="DimGray" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  Tapped="friday"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="satlabel" Text="SAT" Grid.Column="5" Grid.Row="0"   TextColor="DimGray" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="saturday" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="sunlabel"  Text="SUN" Grid.Row="0"  Grid.Column="6"   TextColor="DimGray" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  Tapped="sunday"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <!--<BoxView x:Name="UnderlineBoxView1"   Grid.Row="0"  Grid.Column="0" HeightRequest="20" Rotation="225" Color="#bcbcbf"  VerticalOptions="End"/>-->
+                <Image Source="triangle.png" x:Name="UnderlineBoxView1" HorizontalOptions="Center" TranslationY="15"   Grid.Row="0"  Grid.Column="0" HeightRequest="20" VerticalOptions="End"/>
+            </Grid>
+
+
+            <Grid x:Name="griddata"  Padding="5"  Margin="0,-36,0,0"  VerticalOptions="Start" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <Grid     Margin="0,0,0,0"  HorizontalOptions="Center" Grid.Row="0" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" >
+                        <Image Source="Untitled6.png"/>
+                    </Grid>
+                    <Grid HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0">
+                        <StackLayout Orientation="Vertical">
+                            <Label HorizontalOptions="Center" Text="From" />
+                            <TimePicker   BackgroundColor="Transparent"  x:Name="fromtime" Format="hh:mm tt"  Time="{Binding Timefrom, Mode=TwoWay}" WidthRequest="100"  />
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+
+                <Grid    Margin="0,0,0,0"  HorizontalOptions="Center" Grid.Row="0" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" >
+                        <Image Source="Untitled6.png"/>
+                    </Grid>
+                    <Grid HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0">
+                        <StackLayout Orientation="Vertical">
+                            <Label HorizontalOptions="Center" Text="To" />
+                            <TimePicker BackgroundColor="Transparent"  x:Name="totime"  Format="hh:mm tt"  Time="{Binding Timeto,Mode=TwoWay}" WidthRequest="100"  />
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2"   Margin="0,-30,0,0" VerticalOptions="Center" HorizontalOptions="Center">
+
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center" FontSize="Small" Grid.Row ="0" TextColor="LightSlateGray" Text="Total"/>
+                    <Grid HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" >
+                        <StackLayout Orientation="Horizontal" Grid.Row="0">
+                            <Label  FontSize="Medium" x:Name="totlhr" TextColor="Black" Text="{Binding TotalHours,Mode=TwoWay}"/>
+                            <Label   FontSize="Small" Text="Hr" />
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+
+            <Grid HeightRequest="47" Padding="10"  Grid.Row="3" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Column="0" Grid.Row="0" TextColor="White" Text="Save" HorizontalOptions="Center"  Command="{Binding putdata}" HeightRequest="50" BorderRadius="25" WidthRequest="150" BackgroundColor="#f79651"/>
+            </Grid>
+        </Grid>
+
+
+
+        <Grid x:Name="freegrid"  Padding="10,0,10,10" Grid.Row="2" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="0,10,0,0"  > 
+                <Grid.RowDefinitions> 
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="left" Grid.Row="0" Grid.Column="0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding SlideLeft}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                    <Label Text="{Binding CurrentYear,Mode=TwoWay}" HorizontalOptions="Center" x:Name="Year" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label  Text="{Binding CurrentMonth,Mode=TwoWay}" x:Name="Month" FontSize="16" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <BoxView  HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="1" Color="#60afdf"/>
+                </StackLayout>
+                <Image Source="right" Grid.Row="0"  Grid.Column="2">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SlideRight}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+
+            <ListView x:Name="daylist" Grid.Row="1" CachingStrategy="RecycleElement" ItemSelected="Handle_ItemSelected" ItemsSource="{Binding MYschdeule2,Mode=TwoWay}" BackgroundColor="Transparent" SeparatorVisibility="None" RowHeight="55">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="Edit" Icon="edit.png" CommandParameter="{Binding Id}" Text="Edit"/>
+                                <MenuItem Clicked="Delete" Icon="trash.png"  CommandParameter="{Binding Id}" Text="Delete" IsDestructive="True" />
+                            </ViewCell.ContextActions>
+                            <Grid>
+                                <Grid VerticalOptions="Center" Padding="7">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="25" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="85" />
+                                        <ColumnDefinition Width="85" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="design1" Grid.Row="0" Grid.Column="0" VerticalOptions="End" HorizontalOptions="Center"/>
+                                    <Image Source="design2" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                                    <Label  Grid.Row="0" Grid.Column="1"  Text="{Binding SpecificDateFormatted}"   VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="Black" FontSize="Small"/>
+                                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                                        <Label   Text="Total "  HorizontalOptions="Start"  TextColor="Black" FontSize="12" />
+                                        <Label   Text="{Binding TotalHour,Mode=TwoWay}"  HorizontalOptions="Start"  TextColor="Black" FontSize="13"  FontAttributes="Bold"/>
+                                        <Label   Text="Hr"  HorizontalOptions="Start" TextColor="Black" FontSize="Small"/>
+                                    </StackLayout>
+
+                                    <Grid VerticalOptions="Center" Grid.Column="2" Grid.RowSpan="2">
+                                        <Image Source="border" Aspect="Fill"/>
+                                        <Grid VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" Padding="8, 4, 8, 4">
+                                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="1">
+                                                <Label VerticalTextAlignment="End" HorizontalTextAlignment="Start" Text="From" FontSize="Micro" TextColor="DimGray" />
+                                                <Label VerticalTextAlignment="Start" HorizontalTextAlignment="Center" FontSize="11" Text="{Binding From}" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </Grid>
+
+                                    <Grid  VerticalOptions="Center" Grid.Column="3" Grid.RowSpan="2">
+                                        <Image Source="border" Aspect="Fill"/>
+                                        <Grid VerticalOptions="Center" Grid.Row="0" Padding="8, 4, 8, 4">
+                                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="1">
+                                                <Label VerticalTextAlignment="End" HorizontalTextAlignment="Start" Text="To" FontSize="Micro" TextColor="DimGray" />
+                                                <Label VerticalTextAlignment="Start" HorizontalTextAlignment="Center" FontSize="11" Text="{Binding To}" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                                <BoxView VerticalOptions="End"  Color="Silver"  HeightRequest="1"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Image="add_copy"   x:Name="add_btn"  Clicked="Add" BackgroundColor="Transparent" WidthRequest="60" HeightRequest="60" HorizontalOptions="End" VerticalOptions="End" Grid.Row="2"/>
+        </Grid>
+
+
+
+        <Grid HeightRequest="60" Grid.Row="3" ColumnSpacing="0" x:Name="grdiselect1" VerticalOptions="End">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackLayout x:Name="searchtext"  BackgroundColor="White" Grid.Column="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="opensearchview"  />
+                </StackLayout.GestureRecognizers>
+                <Image x:Name="isearchtap" Margin="0,10,0,0" HeightRequest="25" WidthRequest="25" Source="Magnifier" VerticalOptions="Center"  HorizontalOptions="Center" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="opensearchview"  />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label FontSize="13" Text="Search"  TextColor="DimGray"  HorizontalTextAlignment="Center" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="opensearchview"  />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout  BackgroundColor="White" x:Name="jobtext" Grid.Column="1">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="openjoblisting"  />
+                </StackLayout.GestureRecognizers>
+                <Image x:Name="iMyJobstap" Margin="0,10,0,0" HeightRequest="25" WidthRequest="25" Source="MyJobs"    HorizontalOptions="Center" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="openjoblisting"  />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label FontSize="13" Text="My Jobs"  TextColor="DimGray"  HorizontalTextAlignment="Center"  >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="openjoblisting"  />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout x:Name="timesheettext" BackgroundColor="White" Grid.Column="2">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="opentimesheet"  />
+                </StackLayout.GestureRecognizers>
+                <Image x:Name="itimesheettext" Margin="0,10,0,0" HeightRequest="25" WidthRequest="25" Source="Timesheet"    HorizontalOptions="Center" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="opentimesheet"  />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Time Sheet" FontSize="13"  TextColor="DimGray" HorizontalTextAlignment="Center" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="opentimesheet"  />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout BackgroundColor="White" x:Name="availabilitytext" Grid.Column="3">
+                <Image x:Name="iAvailabilitytext" Margin="0,10,0,0" HeightRequest="25" WidthRequest="25" Source="Availability" HorizontalOptions="Center" />
+                <Label x:Name="AvailabilitytextLabel" FontSize="13" Text="Availability"  TextColor="DimGray"  HorizontalTextAlignment="Center" />
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

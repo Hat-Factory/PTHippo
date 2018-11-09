@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pt_Hippo_Mobile.Controls.CustomNavigationBar" >
+
+    <ContentView.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.iOS>
+                0, 20, 0, 0
+            </OnPlatform.iOS>
+            <OnPlatform.Android>
+                0, 0, 0, 0
+            </OnPlatform.Android>
+        </OnPlatform>
+    </ContentView.Padding>
+    
+    <Grid HeightRequest="60"  BackgroundColor="#87c8ee">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="45"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout x:Name="TLB"   WidthRequest="45" HeightRequest="35" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="0">
+         <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TopLeftButtonClicked" />
+            </StackLayout.GestureRecognizers>
+            <Image x:Name="TopLeftButtonImage" Source="menu.png" WidthRequest="28" HeightRequest="28">
+           
+        </Image>
+            </StackLayout>
+        <Label x:Name="BarTitle" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"  Grid.Column="1"/>
+        <Image Source="logo_white_icon.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="2"/>
+    </Grid>
+    
+</ContentView>

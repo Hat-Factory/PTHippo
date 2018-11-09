@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Pt_Hippo_Mobile.Views.MasterList.MasterDetailworkingMaster"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             Title=" " >
+
+    <ContentPage.Padding>15,30,5,15</ContentPage.Padding>
+
+    <ListView  x:Name="MenuItemsListView" ItemsSource="{Binding MenuItems}"  SeparatorVisibility="None" SeparatorColor="Transparent"  GroupDisplayBinding="{Binding Title}" IsGroupingEnabled="True">
+        <ListView.Header  >
+            <Grid x:Name="MGRID"  HorizontalOptions="FillAndExpand">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Handle_Tapped" NumberOfTapsRequired="1"/>
+                </Grid.GestureRecognizers>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <controls:CircleImage VerticalOptions="CenterAndExpand"  x:Name="ProfilePictures" Grid.Column="0" Aspect="AspectFill"  >
+                    <controls:CircleImage.WidthRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android, iOS">45</On>
+                        </OnPlatform>
+                    </controls:CircleImage.WidthRequest>
+                    <controls:CircleImage.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android, iOS">45</On>
+                        </OnPlatform>
+                    </controls:CircleImage.HeightRequest>
+                </controls:CircleImage>
+
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Grid.Column="1" >
+                    <Label x:Name="username" FontSize="15" />
+
+                </StackLayout>
+                <Image Grid.Column="2"  Source="AroowSideMenue" HorizontalOptions="EndAndExpand" HeightRequest="25" WidthRequest="25" />
+            </Grid>
+
+        </ListView.Header>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout  HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                        <Image HeightRequest="20" WidthRequest="20" Source="{Binding image}" >
+                           
+                        </Image>
+                        <Label VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"  Text="{Binding Title}" FontSize="Small"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.GroupHeaderTemplate>
+            <DataTemplate>
+                <ViewCell StyleId="UserInteractionDisabled">
+
+                    <Grid BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="{Binding Title}" TextColor="#f79651" VerticalOptions="End"/>
+                        <BoxView Color="#e3e3e3" HeightRequest="1" Grid.Row="1"/>
+                    </Grid>
+
+                </ViewCell>
+            </DataTemplate>
+        </ListView.GroupHeaderTemplate>
+    </ListView>
+
+</ContentPage>

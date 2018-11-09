@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:UPVM="clr-namespace:Pt_Hippo_Mobile.ViewModel"
+             xmlns:custom="clr-namespace:Xamarin.RangeSlider.Forms;assembly=Xamarin.RangeSlider.Forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:uvm="clr-namespace:Pt_Hippo_Mobile.ViewModel"
+             x:Class="Pt_Hippo_Mobile.Views.Profile.Profile">
+
+    <ContentPage.BindingContext>
+        <uvm:RegisterViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ColorPrimary">#60afdf</Color>
+            <Color x:Key="titlecolor">#7f8c8d</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid RowSpacing="0" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <!--custom Navigation Bar-->
+        <customcontrols:CustomNavigationBar   NavigationBarType="MasterDetail" Title= "Skills" />
+
+        <!--<Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1" Grid.RowSpan="3" />-->
+
+
+        <ScrollView Grid.Row="2">
+            <Grid  Margin="15,15,15,25" Padding="10"  x:Name="EditProfile" >
+                <Grid.BindingContext>
+                    <UPVM:RegisterViewModel/>
+                </Grid.BindingContext>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="2">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" >
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <StackLayout x:Name="splayout" HorizontalOptions="FillAndExpand" Grid.Row="0" >
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SpecializationClicked">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label FontSize="18" Text="Specialization" TextColor="{StaticResource titlecolor}"/>
+                            <StackLayout Orientation="Vertical" >
+                                <StackLayout HorizontalOptions="StartAndExpand">
+                                    <Label FontSize="16" x:Name="SpecialilizationLabel"  TextColor="{StaticResource ColorPrimary}"  >
+                                    </Label>
+                                </StackLayout>
+
+                                <StackLayout>
+                                    <BoxView BackgroundColor="#7f8c8d"  Opacity="0.5" VerticalOptions="End" HeightRequest="1"  />
+                                </StackLayout>
+
+                            </StackLayout>
+
+                        </StackLayout>
+
+
+                    </Grid>
+                    <!--specialization-->
+
+                    <!--years of exp and Language-->
+                    <Grid Grid.Row="1" Margin="0,-3,0,0"  >
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!--years of exp-->
+                        <StackLayout  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Margin="0,-3,0,0">
+                            <Label FontSize="18" Text="Years of experience " TextColor="{StaticResource titlecolor}"/>
+                            <customcontrols:ImageEntry   Opacity="1" TranslationY="-3"   TextChanged="Handle_TextChanged" Margin="0,-1,30,0"  WidthRequest="10" HeightRequest="69"   x:Name="yearsofexperience"  FontSize="17"   Keyboard="Numeric"  Text="{Binding Enteryearsofexperience,Mode=TwoWay}"  TextColor="{StaticResource ColorPrimary}"  PlaceholderColor="#60afdf" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <!--years of exp-->
+
+                        <!--Language-->
+                        <StackLayout Grid.Column="2" Grid.Row="0"  TranslationX="10"  x:Name="YXLayout"   >
+                            <StackLayout.GestureRecognizers >
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_6"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label  FontSize="19" Text="language"    TextColor="{StaticResource titlecolor}"/>
+                            <StackLayout Padding="0,0,0,0" x:Name="stackselect">
+                                <StackLayout HeightRequest="36" HorizontalOptions="FillAndExpand" TranslationY="-3" >
+                                    <Label HorizontalOptions="StartAndExpand"  FontSize="16" x:Name="LangaugeText"  Text="Select one"   TextColor="{StaticResource ColorPrimary}"   />
+                                </StackLayout>
+                                <StackLayout Margin="-1" x:Name="enable" >
+                                    <BoxView BackgroundColor="#7f8c8d"   Opacity="0.5" VerticalOptions="End" HeightRequest="1"  />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                        <!--Language-->
+                    </Grid>
+                    <!--years of exp and Language-->
+
+                    <!--Software Skills-->
+                    <Grid Grid.Row="2" Margin="0,0,0,0">
+                        <StackLayout x:Name="SSlayout" HorizontalOptions="FillAndExpand" >
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_8">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label FontSize="18" Text="Software skills" TextColor="{StaticResource titlecolor}"/>
+                            <StackLayout>
+                                <StackLayout >
+                                    <Label FontSize="16" x:Name="Softwareskillstext" Text="Select one" TextColor="{StaticResource ColorPrimary}" />
+                                </StackLayout>
+                                <StackLayout Padding="0,0,0,10">
+                                    <BoxView BackgroundColor="#7f8c8d"  Opacity="0.5" VerticalOptions="End" HeightRequest="1"  />
+                                </StackLayout>
+                                <!--<BoxView  HeightRequest="2"  Color="#bcbcbf" VerticalOptions="End" Grid.Row="4"/>-->
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                    <!--Software Skills-->
+
+                    <!--Technical Skills-->
+                    <Grid Grid.Row="3" Margin="0,0,0,0">
+                        <StackLayout x:Name="TSLayout" HorizontalOptions="FillAndExpand"  >
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_10">
+
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label FontSize="18" Text="Speciality skills" TextColor="{StaticResource titlecolor}"/>
+
+                            <StackLayout  >
+                                <StackLayout >
+                                    <Label FontSize="16" x:Name="TechnicalskillsText" Text="Select one" TextColor="{StaticResource ColorPrimary}" />
+                                </StackLayout>
+                                <StackLayout Padding="0,0,0,10">
+                                    <BoxView BackgroundColor="#7f8c8d"  Opacity="0.5" VerticalOptions="End" HeightRequest="1"  />
+                                </StackLayout>
+                                <!--<BoxView  HeightRequest="2"  Color="#bcbcbf" VerticalOptions="End" Grid.Row="4"/>-->
+                            </StackLayout>
+
+                        </StackLayout>
+                    </Grid>
+                    <!--Technical Skills-->
+                </Grid>
+                <!--years of exp and Language-->
+                
+                <!--hourly Rate-->
+                <Grid Grid.Row="3" Margin="0,-5,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="24*"/>
+                        <ColumnDefinition Width="3*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Row="0"  Grid.ColumnSpan="3"  HorizontalOptions="FillAndExpand" TextColor="DimGray" Text="Hourly rate" FontSize="18" />
+                    <StackLayout Grid.Row="1" Grid.Column="1"   Margin="-10,-10,0,0"  >
+                        <custom:RangeSlider  LowerValueChanged="RangeSlider_LowerValueChanged" UpperValueChanged="RangeSlider_UpperValueChanged" x:Name="RangeSlider" MinimumValue="1" MaximumValue="99" LowerValue="{Binding Basicinfos.MinHourRate , Mode=TwoWay}" UpperValue="{Binding Basicinfos.MaxHourRate , Mode=TwoWay}" StepValue="0" StepValueContinuously="False" VerticalOptions="Center" TextSize="15"  WidthRequest="300"/>
+                    </StackLayout>
+                    <StackLayout   WidthRequest="20"  Margin="0,-10,0,0" Grid.Row="1" Grid.Column="0" Orientation="Horizontal" >
+                        <Label Text="$" HorizontalOptions="Start" VerticalTextAlignment="Center" />
+                        <Label x:Name="fromvalue" Margin="-7,0,0,0"  VerticalTextAlignment="Center" HorizontalOptions="Start" Text="{Binding Basicinfos.MinHourRate}" />
+
+                    </StackLayout>
+                    <StackLayout    WidthRequest="20" Margin="-5,-10,0,0"  Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
+                        <Label VerticalTextAlignment="Center" Text="$" HorizontalOptions="End"  />
+                        <Label x:Name="tovalue" Margin="-5,0,0,0"  VerticalTextAlignment="Center" Text="{Binding Basicinfos.MaxHourRate}" HorizontalOptions="End" />
+                    </StackLayout>
+
+                </Grid>
+                <!--hourly Rate-->
+
+                <!--Travel Distance-->
+                <Grid Grid.Row="4" Margin="0,-27,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label HorizontalOptions="FillAndExpand"  Grid.Row="0"  Grid.ColumnSpan="3"  TextColor="DimGray" Text="Travel Distance" FontSize="18" />
+                    <StackLayout  Grid.Row="1" Grid.Column="1"  Margin="-16,-10,0,0" >
+                        <custom:RangeSlider StepValue="5"  x:Name="TravelDistance" LowerValueChanged="TravelDistance_LowerValueChanged" UpperValueChanged="TravelDistance_UpperValueChanged"   MinimumValue="1" MaximumValue="60" LowerValue="{Binding Basicinfos.MinTravelDistance , Mode=TwoWay}" UpperValue="{Binding Basicinfos.MaxTravelDistance , Mode=TwoWay}"  StepValueContinuously="True"  VerticalOptions="Center" TextSize="15" WidthRequest="300" />
+                    </StackLayout>
+
+
+                    <StackLayout Orientation="Horizontal"  Margin="0,-10,0,0"   WidthRequest="10"   Grid.Row="1" Grid.Column="0"  >
+                        <Label x:Name="SmallerValue"  VerticalTextAlignment="Center" HorizontalOptions="Start" Text="{Binding Basicinfos.MinTravelDistance}" />
+                        <Label Text="MI" Margin="-5,0,0,0"  VerticalTextAlignment="Center"  HorizontalOptions="Start"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0,-10,0,0" WidthRequest="20"  Grid.Row="1" Grid.Column="2">
+                        <Label  Margin="-5,0,0,0" VerticalTextAlignment="Center" x:Name="DBigvalue" Text="{Binding Basicinfos.MaxTravelDistance}" HorizontalOptions="End" />
+                        <Label Text="MI" VerticalTextAlignment="Center" HorizontalOptions="End"/>
+                    </StackLayout>
+                </Grid>
+                <!--Travel Distance-->
+
+                <!--EnableHomeCareAssignment-->
+                <Grid Grid.Row="5" Margin="0,-8,0,0" >
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout HorizontalOptions="StartAndExpand" >
+                            <Label   Text="Receive home care assignments" FontSize="18"  TextColor="{StaticResource titlecolor}" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand">
+                            <Switch IsToggled="{Binding Basicinfos.EnableHomeCareAssignment}"  />
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+                <!--EnableHomeCareAssignment-->
+                <Grid Grid.Row="6"  Margin="0,10,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" >
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Padding="0,2,0,0" Margin="0,2,0,0">
+                                <Label  FontSize="14" HorizontalOptions="FillAndExpand"  Text="{Binding ShowName}" IsVisible="false" TextColor="Orange" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Vertical" Grid.Row="1">
+                        <Grid   >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout  WidthRequest="150"   HeightRequest="50" Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
+                                <Button Text=" Upload Resume" x:Name="btnt"  IsEnabled="{Binding isenabel}" Command="{Binding PickPhoto}"   WidthRequest="150"   HeightRequest="50" Opacity="0.5" TextColor="#1d1d26" BackgroundColor="#D9DBDE" />
+                            </StackLayout>
+                            <StackLayout Grid.Row="0" Grid.Column="1" >
+                                <Label FontSize="16" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand"  Text="{Binding ShowName}" TextColor="Orange" />
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+
+                    <!--Save Button-->
+                    <Grid Grid.Row="2">
+                        <Button IsEnabled="{Binding isenabelbtn}"  Text="Save" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="White"   Command="{Binding Submit}" HeightRequest="40" BorderRadius="20" WidthRequest="150" BackgroundColor="#f79651"/>
+                    </Grid>
+                    <!--Save Button-->
+                </Grid>
+
+
+
+
+            </Grid>
+
+
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

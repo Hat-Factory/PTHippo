@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Pt_Hippo_Mobile.Views.Useragreementpage" 
+             xmlns:llr="clr-namespace:Pt_Hippo_Mobile.Controls"
+    BackgroundImage="background_2">
+    <ContentPage.Content>
+
+        <ScrollView Margin="0,0,0,20">
+            <StackLayout Orientation="Vertical" x:Name="mainstack" Margin="20,20,20,25" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Text="Privacy and Policy" TextColor="#2980b9" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,20,0,4" FontSize="21" />
+                    <StackLayout Orientation="Vertical" Spacing="0" Grid.Row="1">
+                    <llr:LongLabel  x:Name="agreement1" FontSize="14" TextColor="SlateGray" HorizontalOptions="FillAndExpand"/>
+                    <llr:LongLabel  x:Name="agreement2" FontSize="14" TextColor="SlateGray" HorizontalOptions="FillAndExpand"/>
+                                        <llr:LongLabel  x:Name="agreement3" FontSize="14" TextColor="SlateGray" HorizontalOptions="FillAndExpand"/>
+
+                    </StackLayout>
+                </Grid>
+                <Button  Text ="Accept" Opacity="1.0" Clicked="Handle_Clicked" HorizontalOptions="Center" HeightRequest="40" WidthRequest="160"  Margin="67,20,67,20" BorderRadius="20" TextColor="White" BackgroundColor="#f79651"/>
+            </StackLayout>
+        </ScrollView>
+
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,148 @@
+﻿using Pt_Hippo_Mobile.Views.jobs;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using Pt_Hippo_Mobile.ViewModel;
+using Pt_Hippo_Mobile.Views;
+using Pt_Hippo_Mobile.Helpers;
+using Pt_Hippo_Mobile.RestClient.Rating;
+using Pt_Hippo_Mobile.Views.AboutPthippo;
+using Pt_Hippo_Mobile.RestClient;
+using Pt_Hippo_Mobile.Views.SettingsViews;
+using Pt_Hippo_Mobile.RestClient.ContactsPrefrences;
+using Pt_Hippo_Mobile.Views.BackgroundCheckFolder;
+using Pt_Hippo_Mobile.RestClient.BasicinformationRest;
+using Plugin.Connectivity;
+using Pt_Hippo_Mobile.Resolvers;
+
+namespace Pt_Hippo_Mobile.Views.MasterList
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MasterDetailworkingMaster : ContentPage
+    {
+        Getbasicinfo BasicinfoData = new Getbasicinfo();
+
+        public ListView ListView;
+        //string images;
+        public MasterDetailworkingMaster()
+        {
+            InternetOrServeHelper.ShowNoInternetMessage = false;
+            InitializeComponent();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                this.LoadPersonalInfo();
+                //this.LoadJobsList();
+
+                MessagingCenter.Subscribe<personalinodviewmodel>(this, "UpdatePersonalInfo", (sender) =>
+                {
+                    //ProfilePictures.Source = null;
+                    this.LoadPersonalInfo();
+                });
+
+                //Task.Run(() => this.LoadPersonalInfo()).Wait();
+                //Task.Run(() => this.LoadJobs()).Wait();
+            }
+            else
+            {
+                Task.Run(() => InternetOrServeHelper.ShowCheckInternet()).Wait();
+            }
+            BindingContext = new MasterDetailworkingMasterViewModel();
+            ListView = MenuItemsListView;
+
+        }
+
+        public async void LoadPersonalInfo()
+        {
+            UserDataHelper.EmployeeCurrentData = await BasicinfoData.GetCurentUserDetailsAsync(URLConfig.UserBasicDataAPI);
+            await EmployeeProfileHelper.RefreshEmployeeCurrentProfile(true);
+
+            var userinfo = UserDataHelper.EmployeeCurrentData;
+            if (userinfo != null)
+            {
+                username.Text = userinfo.firstName + userinfo.lastName;
+                Settings.FirstName = userinfo.firstName;
+                Settings.LastName = userinfo.lastName;
+                Settings.Username = userinfo.email;
+                Settings.profileimage = userinfo.profilePicture;
+            }
+
+            ProfilePictures.Source = constants.WebServiceUrls + userinfo.profilePicture;
+
+        }
+
+        class MasterDetailworkingMasterViewModel : INotifyPropertyChanged
+        {
+            RatingCounter api = new RatingCounter();
+            //  public string getvalue { get; set; }
+
+
+            public ObservableCollection<MasterDetailworkingMenuGroup> MenuItems { get; set; }
+
+            public MasterDetailworkingMasterViewModel()
+            {
+                // counter();
+
+                MenuItems = new ObservableCollection<MasterDetailworkingMenuGroup>()
+                {
+                    new MasterDetailworkingMenuGroup("Jobs")
+                    {
+                        new MasterDetailworkingMenuItem { Title =SideMenuHelper.Jobs,image="calendar.png",TargetType=typeof(JobListings.JobListing) },
+                        new MasterDetailworkingMenuItem { Title =SideMenuHelper.MyTimeSheet ,image="snoozed.png",TargetType=typeof(Pt_Hippo_Mobile.Views.jobtimesheet) },
+                        new MasterDetailworkingMenuItem { Title =SideMenuHelper.MyBankAccount ,image="Wallet.png",TargetType=typeof(Bankaccount) },
+
+                        new MasterDetailworkingMenuItem { Title = SideMenuHelper.PendingRatings,  image="Rating.png",TargetType=typeof(Ratingpage)}
+
+                    },
+                    new MasterDetailworkingMenuGroup("Professional Information")
+                    {
+                        new MasterDetailworkingMenuItem{ Title=SideMenuHelper.ProfileAndSkills,image="profile.png",TargetType=typeof(Profile.Profile)},
+                        new MasterDetailworkingMenuItem{ Title=SideMenuHelper.MyLicenses,image="shieldcheck.png",TargetType=typeof(Mylicences)},
+                        new MasterDetailworkingMenuItem{ Title=SideMenuHelper.Availiblity,image="snoozed.png",TargetType=typeof(ChooseMytimes)},
+                        new MasterDetailworkingMenuItem{ Title=SideMenuHelper.WorkExperience,image="Experience.png",TargetType=typeof(MyExperiance)},
+<<<<<<< HEAD
+                        new MasterDetailworkingMenuItem{ Title=SideMenuHelper.WorkDocuments,image="docspic.png",TargetType=typeof(TappedWantedDocuments)},
+=======
+                        new MasterDetailworkingMenuItem{ Title="Work Documents",image="profile.png",TargetType=typeof(TappedWantedDocuments)},
+>>>>>>> master
+                    },
+                    new MasterDetailworkingMenuGroup("Support & Settings")
+                    {
+                        new MasterDetailworkingMenuItem { Title =SideMenuHelper.AboutPTHippo ,image="About.png",TargetType=typeof(AboutUs) },
+                        new MasterDetailworkingMenuItem{ Title=SideMenuHelper.PrivacyAndTerms,image="typewriter.png",TargetType=typeof(terms)},
+                        new MasterDetailworkingMenuItem{ Title=SideMenuHelper.Support,image="clipboardalert.png",TargetType=typeof(Mysupportpage)},
+                        new MasterDetailworkingMenuItem{ Title=SideMenuHelper.Setting,image="settings.png",TargetType=typeof(SettingsPage)},
+                        new MasterDetailworkingMenuItem{ Title=SideMenuHelper.SignOut,image="logout.png",TargetType=typeof(LoginPage)},
+                        
+                    }
+                };
+            }
+
+            #region INotifyPropertyChanged Implementation
+            public event PropertyChangedEventHandler PropertyChanged;
+            void OnPropertyChanged([CallerMemberName] string propertyName = "")
+            {
+                if (PropertyChanged == null)
+                    return;
+
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+
+            }
+            #endregion
+        }
+
+        void Handle_Tapped(object sender, System.EventArgs e)
+        {
+            var page = new Personalnformation();
+            Navigation.PushModalAsync(page);
+        }
+    }
+}

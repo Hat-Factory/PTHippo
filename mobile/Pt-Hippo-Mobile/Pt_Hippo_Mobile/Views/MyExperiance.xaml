@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+     xmlns:rvm="clr-namespace:Pt_Hippo_Mobile.ViewModel.ResumeViewModel"
+    xmlns:fab="clr-namespace:FAB.Forms;assembly=FAB.Forms"
+
+    x:Class="Pt_Hippo_Mobile.Views.MyExperiance">
+     <ContentPage.BindingContext>
+        <rvm:ResumeViewModel/>
+    </ContentPage.BindingContext>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <customcontrols:CustomNavigationBar NavigationBarType="MasterDetail" Title="Experience"/>
+
+        <Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1"/>
+
+        <ListView x:Name="explist" CachingStrategy="RecycleElement" ItemsSource="{Binding Path=ResumeViewList}"  BackgroundColor="Transparent" SeparatorVisibility="None" RowHeight="100" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                         <ViewCell.ContextActions>
+                         <MenuItem Clicked="btn_edit" Icon="edit.png"  CommandParameter="{Binding id}"
+               Text="Edit" />
+                <MenuItem Clicked="btn_delet" Icon="trash.png"  CommandParameter="{Binding id}"
+               Text="Delete" IsDestructive="True" />
+               </ViewCell.ContextActions>
+                        <Grid Padding="2" Margin="0,15,0,0">
+                            
+                            <Grid.RowDefinitions>
+                                
+                                <RowDefinition Height="8.7*"/>
+                                <RowDefinition Height="4.5*"/>
+                                <RowDefinition Height="6.7*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="20*"/>
+                            </Grid.ColumnDefinitions>
+                            <BoxView WidthRequest="3" Color="#f5a623" HorizontalOptions="Center" Grid.RowSpan="3"/>
+
+                            <Label Text="{Binding as}"   HeightRequest="100"  TextColor="#60afdf" FontSize="22" Grid.Row="0" Grid.Column="1"/>
+                            <Label Text="{Binding startEndDatesText}" Opacity="0.5" TranslationY="-5"   HeightRequest="100"  TextColor="#1d1d26" FontSize="13" Grid.Row="1" Grid.Column="1"/>
+                            <Label Text="{Binding doing}" TextColor="#1d1d26" FontSize="17" Opacity="0.5" Grid.Row="2" HeightRequest="100"  TranslationY="-10"  Grid.Column="1"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Image="add_copy" x:Name="clickbtn"   Clicked="Handle_Clicked" BackgroundColor="Transparent" WidthRequest="60" HeightRequest="60" HorizontalOptions="End" VerticalOptions="End" Margin="20" Grid.Row="1"/>
+    </Grid>
+
+</ContentPage>

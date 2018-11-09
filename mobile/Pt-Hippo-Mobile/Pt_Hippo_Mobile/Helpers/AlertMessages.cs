@@ -1,0 +1,64 @@
+﻿using System;
+namespace Pt_Hippo_Mobile.Helpers
+{
+    public class AlertMessages
+    {
+        public static string AddedMessage = "Data Saved Successfully.";
+        public static string textformating  = "error ocuerd while formating text";
+        public static string RequestBackgroundCheck = "Are you willing to procced ?";
+        public static string StateNameMatching  = "State Name is wrong";
+        public static string RequestConfirmationMessage = "we will back to you soon.";
+        public static string Statenull = "State field is missing ";
+        public static string ErrorTitle = "Error !";
+        public static string EnableLocationSettings = "Please enable location settings before doing this action";
+        public static string Success = "Success";
+        public static string Checkedin = "Successfully Checked in.";
+        public static string Checkedout = "Successfully Checked out.";
+        public static string DelteMessage = "Deleted Successfully.";
+        public static string VaildTime = "To should be greater than From.";
+        public static string TimeFrom = "Time From is required.";
+        public static string Timeto = "Time To is required.";
+        public static string SpecializationMessage = "Please select your specialization.";
+        public static string YearsOfExperinceMessage = "Please select your years of experience.";
+        public static string OkayTitle = "Okay";
+        public static string SavedMessage = "Saved Successfully.";
+        public static string EditedMessage = "Saved Successfully.";
+        private static string DeleteConfrimation = "Do you want to delete PLACEHOLDER ?";
+        public static string Zipcode = "Please enter a valid Zipcode";
+        public static string PasswordChanged = "Your password has changed successfuly";
+        public static string Contact = "Your message has been sent to PT Hippo Team.";
+        public static string EnterEmail = "Please Enter Your Email";
+        public static string SendEmail = "An email with reset password details has been sent to your mail.";
+        public static string Uploadfile = "Please attach document file.";
+        public static string Emailvaild = "Wrong User Name or Password";
+        public static string Missingemail = "Please enter your E-mail.";
+        public static string Missingpass = "Please enter your Password.";
+        public static string Renterpass = "Confirm password is not matching your new password.";
+        public static string internetconnection = "You have trouble connecting to the internet, Please check your internet connection.";
+        public static string StillNoInternetConnection = "Still No Internet Connection.";
+        public static string IncorrectFormat = "Please Check Data Format.";
+        public static string FileUploaded = "Your file has been uploaded successfuly.";
+        public static string AllFieldsAreRequired = "Please enter all fields.";
+        public static string WrongPasword = "You have enter wrong password.";
+        public static string FirstName = "Your first name is required.";
+        public static string LastNmae = "Your last name is required.";
+        public static string mobile = "Mobile is required.";
+        public static string mobilelength = "Mobile minimum length is 11";
+        public static string passwordlength = "Password minimum length is 6.";
+        public static string zipcode = "Zipcode is required.";
+        public static string zipcodelength = "Minimum length for Zipcode is 3.";
+        public static string savedjob = "Do you want to save this job (";
+        public static string unsavedjob = "Do you want to unsave this job (";
+        public static string AgreeOnTermofuseandpolicy = "Please agree on Term of Use And Privacy Policy.";
+        public static string Trylater = "Please try again later.";
+        public static string Birthdate = "Not a valid Birthdate.";
+        public static string FileDeleted = "File Deleted Successfuly.";
+        public static string Registration = "Awesome! Registration Succeed, Check your email to verify your account";
+        public static string Canceljob = "Do you wan't to cancel this Job ?";
+        public static string comparedate = "End date must be greater than start date.";
+        public static string DeleteConfirmation(string placeHolder)
+        {
+            return DeleteConfrimation.Replace("PLACEHOLDER", placeHolder);
+        }
+    }
+}

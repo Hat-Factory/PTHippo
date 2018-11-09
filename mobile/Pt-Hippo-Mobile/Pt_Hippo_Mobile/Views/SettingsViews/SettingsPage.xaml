@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+             BackgroundImage="bg_trans"
+             xmlns:SVM="clr-namespace:Pt_Hippo_Mobile.ViewModel.SettingsViewModel"
+             x:Class="Pt_Hippo_Mobile.Views.SettingsViews.SettingsPage">
+    <ContentPage.BindingContext>
+        <SVM:SettingsControler/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <customcontrols:CustomNavigationBar  Grid.Row="0" NavigationBarType="MasterDetail"  Title="Settings"/>
+            <Grid Grid.Row="1" Padding="10" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+               
+                <!--Allow Notfication-->
+                <Grid Grid.Row="0">
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout HorizontalOptions="StartAndExpand" >
+                            <Label Text="Receive notifications" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand" >
+
+                            <Switch Toggled="Switch_Toggled"  IsToggled="{Binding SettingsProp.enableJobBroadcasting , Mode=TwoWay}"  x:Name="toglename" IsEnabled="true" /> 
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+                <!--Allow Notfication-->
+                <Grid Grid.Row="1">
+                    <BoxView   HeightRequest="2"  Color="#F2F2F2" VerticalOptions="End"/>
+                </Grid>
+            </Grid>
+
+        </Grid>
+        
+       
+    </ContentPage.Content>
+</ContentPage>

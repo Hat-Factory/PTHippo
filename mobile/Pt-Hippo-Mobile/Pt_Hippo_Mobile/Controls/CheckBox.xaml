@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Pt_Hippo_Mobile.Controls.CheckBox" HeightRequest="400" WidthRequest="400">
+	<StackLayout Orientation="Horizontal" HeightRequest="400" WidthRequest="400" >
+        <Label x:Name="boxLabel" Text="&#x2610;"  HeightRequest="400" WidthRequest="400"/>
+        <Label x:Name="textLabel" />
+    </StackLayout>
+
+    <ContentView.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnCheckBoxTapped" />
+    </ContentView.GestureRecognizers>
+</ContentView>

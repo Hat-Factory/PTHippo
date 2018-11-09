@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "100402391986",
+    "firebase_url": "https://pthippo-d0034.firebaseio.com",
+    "project_id": "pthippo-d0034",
+    "storage_bucket": "pthippo-d0034.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100402391986:android:3532b6c8ddaf86f3",
+        "android_client_info": {
+          "package_name": "com.pthippo.tmentors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "100402391986-jr1pljflsg7ui2mn6hn80l15d9gvm3fn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pthippo.tmentors",
+            "certificate_hash": "61dc5e742c304e47774096ed4beb8cd611b24594"
+          }
+        },
+        {
+          "client_id": "100402391986-69lejauol1d1423672vtk3vb2rkogjq8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9slRlCSk6Aw2Hpcj-t5eDBNJrMPGwoZk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "100402391986-rvvc6ivtdlbm8jaji7005ooqqujmmqs1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "PtHippoMobile"
+              }
+            },
+            {
+              "client_id": "100402391986-69lejauol1d1423672vtk3vb2rkogjq8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

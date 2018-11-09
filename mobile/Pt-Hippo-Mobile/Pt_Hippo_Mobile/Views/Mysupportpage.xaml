@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customcontrols="clr-namespace:Pt_Hippo_Mobile.Controls"
+      xmlns:vm="clr-namespace:Pt_Hippo_Mobile.ViewModel"
+      xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+      x:Class="Pt_Hippo_Mobile.Views.Mysupportpage" >
+    <Grid x:Name="maincv">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid IsVisible="True" Grid.Row="0" RowSpacing="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <customcontrols:CustomNavigationBar Title="Support" NavigationBarType="MasterDetail"/>
+
+            <Image Source="bg_trans" Aspect="AspectFill" Grid.Row="1" Grid.RowSpan="3"/>
+
+            <Grid HeightRequest="45" Grid.Row="1" ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Help" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="clickFAQ"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Contact Us" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="clickedcontactus"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="How it works" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="clicked_how_it_work"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView x:Name="UnderlineBoxView"  HeightRequest="3" Color="#f79651" VerticalOptions="End"/>
+            </Grid>
+            <Grid x:Name="FAQS" TranslationY="5" Margin="10,20,10,0"  Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid  Grid.Row="0">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="openlink2" />
+                    </Grid.GestureRecognizers>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+
+                    </Grid.RowDefinitions>
+
+                    <StackLayout   Orientation="Horizontal" Grid.RowSpan="2" Grid.Column="0"  >
+                        <BoxView HeightRequest="50"   WidthRequest="3" Color="#f79651" VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Column="0"   Grid.Row="1">
+                        <Label Text="FAQS" TranslationY="-19" TextColor="#60afdf" Margin="10,0,5,0"   FontSize="17"  VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                    <!--<BoxView HeightRequest="1" Color="#F2F2F2"  Opacity="0.4" VerticalOptions="End" TranslationY="5" Grid.Row="2"/>-->
+                </Grid>
+                <Grid  Grid.Row="1">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="openlink" />
+                    </Grid.GestureRecognizers>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Horizontal" Grid.RowSpan="2" Grid.Column="0"  >
+                        <BoxView HeightRequest="50"    WidthRequest="3" Color="#f79651" VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center"  Grid.Column="0" Grid.Row="1">
+                        <Label Text="Privacy Policy" TextColor="#60afdf" TranslationY="-19" Margin="10,0,5,0"   FontSize="17"  VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                    <!--<BoxView HeightRequest="1" Color="DimGray"  Opacity="0.4" VerticalOptions="End" TranslationY="5" Grid.Row="2"/>-->
+                </Grid>
+                <Grid  Grid.Row="2">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="openlink1" />
+                    </Grid.GestureRecognizers>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout  Orientation="Horizontal" Grid.RowSpan="2" Grid.Column="0"  >
+                        <BoxView HeightRequest="50"   WidthRequest="3" Color="#f79651" VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"   Grid.Column="0" Grid.Row="1">
+                        <Label Text="Terms of use and user agreement"   VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" TranslationY="-19" TextColor="#60afdf" Margin="10,0,5,0"   FontSize="17"    VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </Grid>
+
+
+            </Grid>
+
+            <Grid x:Name="contactusview" Padding="25" Grid.Row="2">
+                <Grid.BindingContext>
+                    <vm:contactusviewmodel/>
+                </Grid.BindingContext>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+
+
+                </Grid.ColumnDefinitions>
+                <StackLayout Orientation="Vertical" Grid.Row="0" TranslationY="20" Grid.ColumnSpan="3" >
+                    <Label Text="Subject"  Opacity="0.5" FontSize="18"/>
+                    <customcontrols:ImageEntry  Opacity="1"  Placeholder=" Subject "  FontSize="16"  TextColor="#60afdf" PlaceholderColor="#60afdf" HorizontalOptions="FillAndExpand" VerticalOptions="Center" TranslationY="-3" Text="{Binding Subject,Mode=TwoWay}" Keyboard="Text"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical"  Grid.Row="1" TranslationY="26" Grid.ColumnSpan="3" >
+
+                    <Label Text="Comments" Opacity="0.5" FontSize="18" />
+
+                    <Editor HorizontalOptions="FillAndExpand"  FontSize="16" HeightRequest="100" Text="{Binding MessageBody,Mode=TwoWay}"  WidthRequest="80" Margin="0,0,30,0"  BackgroundColor="White"    TextColor="#60afdf"/>
+                </StackLayout>
+
+                <Grid   VerticalOptions="Start" Grid.ColumnSpan="3" Grid.Row="2" >
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <Button Grid.ColumnSpan="3" Grid.Row="1" TranslationY="10" TextColor="White"  Command="{Binding send}" TranslationX="40"   Text="Submit" HorizontalOptions="Center"   HeightRequest="40" BorderRadius="20" WidthRequest="150" BackgroundColor="#f79651"/>
+
+
+                </Grid>
+
+            </Grid>
+
+            <Grid x:Name="howitworkview" Padding="25" Grid.Row="2">
+                <StackLayout x:Name="mystack" Grid.Row="0" >
+                    <Label x:Name="how"  FontSize="15"  WidthRequest="200"/>
+                    <Button TextColor="White"  Clicked="taketour" Margin="67,0,67,10"  TranslationY="100" Text="Start tour"  BackgroundColor="#f79651 "    VerticalOptions="CenterAndExpand" BorderRadius="25"   FontSize="15" WidthRequest="50" HeightRequest="50"/>
+                </StackLayout>
+
+            </Grid>
+
+        </Grid>
+        <Grid   x:Name="cooloring" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <forms:CarouselView x:Name="MainCarouselView" ItemSelected="MainCarouselView_OnItemSelected" Grid.Row="0" Grid.Column="0">
+                    <forms:CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding .}" />
+                        </DataTemplate>
+                    </forms:CarouselView.ItemTemplate>
+                </forms:CarouselView>
+            </Grid>
+            <Grid Grid.Row="1">
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="10" Orientation="Horizontal">
+                    <Button x:Name="SkipButton" Text="Skip" HorizontalOptions="Center" VerticalOptions="Center" Clicked="SkippComaand" HeightRequest="40" WidthRequest="150"  BorderRadius="20" TextColor="White" BackgroundColor="#f79651"  />
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>
